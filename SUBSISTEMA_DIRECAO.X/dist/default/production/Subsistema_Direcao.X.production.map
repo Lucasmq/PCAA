@@ -1,0 +1,166 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Fri Sep 14 12:53:17 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_1       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_2       code   0x000004    program   0x0003a0
+.config_2007_BUILD/DEFAULT/PRODUCTION/SUB_DIR       code   0x002007    program   0x000002
+                   .org_0       code   0x002100    program   0x000006
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x0001d3      
+                            0x002007    0x002007      
+                            0x002100    0x002102      
+            471 out of 1158 program addresses used, program memory utilization is 40%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    BIT_0   0x000056    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                    BIT_1   0x000068    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+      COLISAO_ENVIAR_BITS   0x0001ac    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        COLISAO_START_BIT   0x0001a6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        CONCLUIDA_LEITURA   0x00007a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               DELAY100MS   0x0001c9    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             DELAY100MS_0   0x0001cd    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                 DELAY_US   0x0001be    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                  DIREITA   0x00009a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+         DIREITA_PRA_ALTA   0x00009f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        DIREITA_PRA_BAIXA   0x0000a5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                  ENVIA_0   0x000177    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                  ENVIA_1   0x000183    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               ENVIA_BYTE   0x000174    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+              ENVIA_DADOS   0x000112    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+       ESPERA_BIT_0_MUDAR   0x000065    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+       ESPERA_BIT_1_MUDAR   0x000077    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+         ESPERA_SUBIDA_ST   0x000048    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+  ESPERA_SUBIDA_START_BIT   0x000045    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                 ESQUERDA   0x0000ab    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        ESQUERDA_PRA_ALTA   0x0000b0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+       ESQUERDA_PRA_BAIXA   0x0000b6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               FIM_BYTE_0   0x000128    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                 FIM_DADO   0x00013a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             FIM_ENDERECO   0x000131    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+          FIM_ENVIA_DADOS   0x000102    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+            FIM_START_BIT   0x000123    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                   FRENTE   0x0000ca    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+         INCREMENTA_LIMPA   0x00001b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+     INCREMENTA_START_BIT   0x000036    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                   INICIO   0x0000d8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        INICIO_START_SYNC   0x000012    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+     INIC_CONT_START_SYNC   0x00000e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                 LER_BITS   0x00004d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        LER_BITS_CONTINUA   0x000050    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                LE_EEPROM   0x0000d1    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                     MAIN   0x0000fc    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+            OK_TRATAMENTO   0x0000ce    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               PASSA_DADO   0x000081    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               REQUISICAO   0x0000bc    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                  SAI_INT   0x000084    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                START_BIT   0x000031    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+      START_BIT_CONFIGURA   0x00002e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+          START_BIT_ENVIA   0x000140    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+         START_BIT_INICIO   0x00002c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+            START_BIT_LOW   0x000040    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+     START_BIT_LOW_INICIO   0x00003d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               START_SYNC   0x000016    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+         START_SYNC_SLAVE   0x0001b6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+       START_SYNC_SLAVE_0   0x0001b9    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+           TEMPO_EM_BAIXA   0x0001a3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+           TRATAR_COLISAO   0x00000b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+              TRATAR_DADO   0x000090    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             VERIFICA_1_0   0x000053    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+      VERIFICA_BARRAMENTO   0x000105    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+    VERIFICA_BARRAMENTO_0   0x00010d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+  VERIFICA_DIR_REQUESICAO   0x000097    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+          VERIFICA_MASTER   0x000028    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+          VERIFICA_SLAVER   0x000020    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+       VERIFICA_START_BIT   0x00003a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             _.org_2_0078   0x000078    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             _.org_2_01AE   0x0001ae    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             _.org_2_01BB   0x0001bb    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             _.org_2_01CE   0x0001ce    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             _.org_2_01D1   0x0001d1    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           TRATAR_COLISAO   0x00000b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+     INIC_CONT_START_SYNC   0x00000e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        INICIO_START_SYNC   0x000012    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               START_SYNC   0x000016    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+         INCREMENTA_LIMPA   0x00001b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+          VERIFICA_SLAVER   0x000020    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+          VERIFICA_MASTER   0x000028    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+         START_BIT_INICIO   0x00002c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+      START_BIT_CONFIGURA   0x00002e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                START_BIT   0x000031    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+     INCREMENTA_START_BIT   0x000036    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+       VERIFICA_START_BIT   0x00003a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+     START_BIT_LOW_INICIO   0x00003d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+            START_BIT_LOW   0x000040    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+  ESPERA_SUBIDA_START_BIT   0x000045    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+         ESPERA_SUBIDA_ST   0x000048    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                 LER_BITS   0x00004d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        LER_BITS_CONTINUA   0x000050    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             VERIFICA_1_0   0x000053    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                    BIT_0   0x000056    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+       ESPERA_BIT_0_MUDAR   0x000065    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                    BIT_1   0x000068    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+       ESPERA_BIT_1_MUDAR   0x000077    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             _.org_2_0078   0x000078    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        CONCLUIDA_LEITURA   0x00007a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               PASSA_DADO   0x000081    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                  SAI_INT   0x000084    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+              TRATAR_DADO   0x000090    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+  VERIFICA_DIR_REQUESICAO   0x000097    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                  DIREITA   0x00009a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+         DIREITA_PRA_ALTA   0x00009f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        DIREITA_PRA_BAIXA   0x0000a5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                 ESQUERDA   0x0000ab    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        ESQUERDA_PRA_ALTA   0x0000b0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+       ESQUERDA_PRA_BAIXA   0x0000b6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               REQUISICAO   0x0000bc    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                   FRENTE   0x0000ca    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+            OK_TRATAMENTO   0x0000ce    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                LE_EEPROM   0x0000d1    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                   INICIO   0x0000d8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                     MAIN   0x0000fc    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+          FIM_ENVIA_DADOS   0x000102    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+      VERIFICA_BARRAMENTO   0x000105    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+    VERIFICA_BARRAMENTO_0   0x00010d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+              ENVIA_DADOS   0x000112    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+            FIM_START_BIT   0x000123    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               FIM_BYTE_0   0x000128    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             FIM_ENDERECO   0x000131    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                 FIM_DADO   0x00013a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+          START_BIT_ENVIA   0x000140    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               ENVIA_BYTE   0x000174    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                  ENVIA_0   0x000177    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                  ENVIA_1   0x000183    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+           TEMPO_EM_BAIXA   0x0001a3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+        COLISAO_START_BIT   0x0001a6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+      COLISAO_ENVIAR_BITS   0x0001ac    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             _.org_2_01AE   0x0001ae    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+         START_SYNC_SLAVE   0x0001b6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+       START_SYNC_SLAVE_0   0x0001b9    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             _.org_2_01BB   0x0001bb    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+                 DELAY_US   0x0001be    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+               DELAY100MS   0x0001c9    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             DELAY100MS_0   0x0001cd    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             _.org_2_01CE   0x0001ce    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+             _.org_2_01D1   0x0001d1    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Subsistema_Direcao.X\sub_direcao.asm
+
+

@@ -1,0 +1,200 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Thu Oct 04 13:58:56 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_2       code   0x000000    program   0x000002
+                   .org_3       code   0x000004    program   0x000464
+.config_2007_SINALIZACAO_OWP.O       code   0x002007    program   0x000002
+                   .org_1       code   0x002100    program   0x000008
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000004    0x000235      
+                            0x002007    0x002007      
+                            0x002100    0x002103      
+            568 out of 2182 program addresses used, program memory utilization is 26%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    BIT_0   0x00005e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                    BIT_1   0x00006b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                  COLISAO   0x00008b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+      COLISAO_ENVIAR_BITS   0x00020f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        COLISAO_START_BIT   0x000208    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        CONCLUIDA_LEITURA   0x000078    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+               DELAY100MS   0x00022b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+             DELAY100MS_0   0x00022f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                 DELAY_US   0x000220    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           DESLIGAR_FAROL   0x0000d2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+              DESLIGAR_RE   0x0000d6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           DESLIGA_ALERTA   0x0000e3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+     DESLIGA_SETA_DIREITA   0x0000f5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+    DESLIGA_SETA_ESQUERDA   0x0000ed    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                ENVIAR_OK   0x000163    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          ENVIAR_SENSORES   0x00013b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                  ENVIA_0   0x0001bf    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                  ENVIA_1   0x0001d6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+               ENVIA_BYTE   0x0001bc    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+              ENVIA_DADOS   0x000150    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          ENVIOU_SENSORES   0x00018e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       ESPERA_BIT_0_MUDAR   0x000068    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       ESPERA_BIT_1_MUDAR   0x000075    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+         ESPERA_SUBIDA_ST   0x00004b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+  ESPERA_SUBIDA_START_BIT   0x000048    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+               FIM_ALERTA   0x0000c4    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+               FIM_BYTE_0   0x000170    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                 FIM_DADO   0x000182    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+             FIM_ENDERECO   0x000179    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          FIM_ENVIA_DADOS   0x00013d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                FIM_FAROL   0x0000ba    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                FIM_FREIO   0x0000c0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                   FIM_RE   0x0000bd    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        FIM_SETA_ESQUERDA   0x0000c7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+      FIM_SINCRONIZA_LEDS   0x0000da    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+            FIM_START_BIT   0x00016b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+    FIM_TRATA_SINALIZACAO   0x000137    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           FREIO_ACIONADO   0x0000ca    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        FREIO_DESACIONADO   0x0000cd    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+         INCREMENTA_LIMPA   0x00001d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+     INCREMENTA_START_BIT   0x000039    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        INICIALIZA_TIMER1   0x0000f7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                   INICIO   0x000108    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        INICIO_START_SYNC   0x000014    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+     INIC_CONT_START_SYNC   0x000010    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                 LER_BITS   0x000050    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        LER_BITS_CONTINUA   0x000055    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                LE_EEPROM   0x000101    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+              LIGAR_FAROL   0x0000d0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                 LIGAR_RE   0x0000d4    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+              LIGA_ALERTA   0x0000d8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        LIGA_SETA_DIREITA   0x0000ef    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       LIGA_SETA_ESQUERDA   0x0000e7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                     MAIN   0x000135    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+      PASSA_DADO_SENSORES   0x0000a5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+   PASSA_DADO_SINALIZACAO   0x000097    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+         PREPARA_SENSORES   0x00015d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       REQUISICAO_ENVIADA   0x00018b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+    REQUISICAO_ILUMINACAO   0x0000fd    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                  SAI_INT   0x0000a8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          SINCRONIZA_LEDS   0x0000df    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                START_BIT   0x000034    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+      START_BIT_CONFIGURA   0x000031    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          START_BIT_ENVIA   0x000190    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+         START_BIT_INICIO   0x00002f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+            START_BIT_LOW   0x000043    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+     START_BIT_LOW_INICIO   0x000040    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+               START_SYNC   0x000018    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+         START_SYNC_SLAVE   0x000219    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       START_SYNC_SLAVE_0   0x00021c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           TEMPO_EM_BAIXA   0x0001f9    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           TESTA_SENSORES   0x000085    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           TRATAR_COLISAO   0x00000d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+     TRATA_DADOS_SENSORES   0x000100    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+  TRATA_DADOS_SINALIZACAO   0x0000b5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           TRATA_SENSORES   0x00007f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+             VERIFICA_1_0   0x00005b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+      VERIFICA_BARRAMENTO   0x000140    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+    VERIFICA_BARRAMENTO_0   0x000148    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          VERIFICA_MASTER   0x00002a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          VERIFICA_SLAVER   0x000022    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       VERIFICA_START_BIT   0x00003d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           TRATAR_COLISAO   0x00000d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+     INIC_CONT_START_SYNC   0x000010    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        INICIO_START_SYNC   0x000014    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+               START_SYNC   0x000018    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+         INCREMENTA_LIMPA   0x00001d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          VERIFICA_SLAVER   0x000022    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          VERIFICA_MASTER   0x00002a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+         START_BIT_INICIO   0x00002f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+      START_BIT_CONFIGURA   0x000031    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                START_BIT   0x000034    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+     INCREMENTA_START_BIT   0x000039    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       VERIFICA_START_BIT   0x00003d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+     START_BIT_LOW_INICIO   0x000040    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+            START_BIT_LOW   0x000043    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+  ESPERA_SUBIDA_START_BIT   0x000048    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+         ESPERA_SUBIDA_ST   0x00004b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                 LER_BITS   0x000050    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        LER_BITS_CONTINUA   0x000055    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+             VERIFICA_1_0   0x00005b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                    BIT_0   0x00005e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       ESPERA_BIT_0_MUDAR   0x000068    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                    BIT_1   0x00006b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       ESPERA_BIT_1_MUDAR   0x000075    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        CONCLUIDA_LEITURA   0x000078    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           TRATA_SENSORES   0x00007f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           TESTA_SENSORES   0x000085    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                  COLISAO   0x00008b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+   PASSA_DADO_SINALIZACAO   0x000097    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+      PASSA_DADO_SENSORES   0x0000a5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                  SAI_INT   0x0000a8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+  TRATA_DADOS_SINALIZACAO   0x0000b5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                FIM_FAROL   0x0000ba    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                   FIM_RE   0x0000bd    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                FIM_FREIO   0x0000c0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+               FIM_ALERTA   0x0000c4    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        FIM_SETA_ESQUERDA   0x0000c7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           FREIO_ACIONADO   0x0000ca    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        FREIO_DESACIONADO   0x0000cd    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+              LIGAR_FAROL   0x0000d0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           DESLIGAR_FAROL   0x0000d2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                 LIGAR_RE   0x0000d4    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+              DESLIGAR_RE   0x0000d6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+              LIGA_ALERTA   0x0000d8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+      FIM_SINCRONIZA_LEDS   0x0000da    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          SINCRONIZA_LEDS   0x0000df    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           DESLIGA_ALERTA   0x0000e3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       LIGA_SETA_ESQUERDA   0x0000e7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+    DESLIGA_SETA_ESQUERDA   0x0000ed    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        LIGA_SETA_DIREITA   0x0000ef    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+     DESLIGA_SETA_DIREITA   0x0000f5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        INICIALIZA_TIMER1   0x0000f7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+    REQUISICAO_ILUMINACAO   0x0000fd    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+     TRATA_DADOS_SENSORES   0x000100    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                LE_EEPROM   0x000101    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                   INICIO   0x000108    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                     MAIN   0x000135    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+    FIM_TRATA_SINALIZACAO   0x000137    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          ENVIAR_SENSORES   0x00013b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          FIM_ENVIA_DADOS   0x00013d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+      VERIFICA_BARRAMENTO   0x000140    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+    VERIFICA_BARRAMENTO_0   0x000148    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+              ENVIA_DADOS   0x000150    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+         PREPARA_SENSORES   0x00015d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                ENVIAR_OK   0x000163    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+            FIM_START_BIT   0x00016b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+               FIM_BYTE_0   0x000170    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+             FIM_ENDERECO   0x000179    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                 FIM_DADO   0x000182    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       REQUISICAO_ENVIADA   0x00018b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          ENVIOU_SENSORES   0x00018e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+          START_BIT_ENVIA   0x000190    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+               ENVIA_BYTE   0x0001bc    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                  ENVIA_0   0x0001bf    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                  ENVIA_1   0x0001d6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+           TEMPO_EM_BAIXA   0x0001f9    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+        COLISAO_START_BIT   0x000208    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+      COLISAO_ENVIAR_BITS   0x00020f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+         START_SYNC_SLAVE   0x000219    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+       START_SYNC_SLAVE_0   0x00021c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+                 DELAY_US   0x000220    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+               DELAY100MS   0x00022b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+             DELAY100MS_0   0x00022f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Sinalizacao_carro_OWP.X\sinalizacao_OWP.asm
+
+

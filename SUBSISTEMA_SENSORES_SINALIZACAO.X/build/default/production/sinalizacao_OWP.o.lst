@@ -1,0 +1,1812 @@
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00002 ;*              MODIFICAÇÕES PARA USO COM 16F628A                  *
+                      00003 ;*                FEITAS POR LUCAS QUEIROZ                         *
+                      00004 ;*                    FEVEREIRO DE 2016                            *
+                      00005 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00006 
+                      00007 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00008 ;*                       NOME DO PROJETO                           *
+                      00009 ;*                           CLIENTE                               *
+                      00010 ;*         DESENVOLVIDO PELA MOSAICO ENGENHARIA E CONSULTORIA      *
+                      00011 ;*   VERSÃO: 1.0                           DATA: 17/06/03          *
+                      00012 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00013 ;*                     DESCRIÇÃO DO ARQUIVO                        *
+                      00014 ;*-----------------------------------------------------------------*
+                      00015 ;*   MODELO PARA O PIC 16F628A                                    *
+                      00016 ;*                                                                 *
+                      00017 ;*                                                                 *
+                      00018 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00019 
+                      00020 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00021 ;*                     ARQUIVOS DE DEFINIÇÕES                      *
+                      00022 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00023 #INCLUDE <p16f628a.inc> ;ARQUIVO PADRÃO MICROCHIP PARA 16F628A
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Nov 22 2017
+                      00005 ;  MPASM PIC16F628A processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2017 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      00386         LIST
+                      00024 
+2007   3F30           00025         __CONFIG _BODEN_OFF & _CP_OFF & _PWRTE_ON & _WDT_OFF & _MCLRE_ON & _INTRC_OSC_NOCLKOUT & _LVP_OF
+                            F  
+                      00026 ; _LVP_OFF  =  PARA USAR O RB4
+                      00027 
+                      00028 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00029 ;*                    PAGINAÇÃO DE MEMÓRIA                         *
+                      00030 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00031 ;DEFINIÇÃO DE COMANDOS DE USUÁRIO PARA ALTERAÇÃO DA PÁGINA DE MEMÓRIA
+                      00032 #DEFINE BANK0   BCF STATUS,RP0  ;SETA BANK 0 DE MEMÓRIA
+                      00033 #DEFINE BANK1   BSF STATUS,RP0  ;SETA BANK 1 DE MAMÓRIA
+                      00034 
+                      00035 
+                      00036 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00037 ;*                         VARIÁVEIS                               *
+                      00038 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00039 ; DEFINIÇÃO DOS NOMES E ENDEREÇOS DE TODAS AS VARIÁVEIS UTILIZADAS 
+                      00040 ; PELO SISTEMA
+                      00041 
+                      00042         CBLOCK  0x20    ;ENDEREÇO INICIAL DA MEMÓRIA DE
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00043                                         ;USUÁRIO
+  00000020            00044                 W_TEMP          ;REGISTRADORES TEMPORÁRIOS PARA USO
+  00000021            00045                 STATUS_TEMP     ;JUNTO ÀS INTERRUPÇÕES
+  00000022            00046                 COUNT_SYNC
+                      00047                 
+  00000023            00048                 DELAY_
+  00000024            00049                 BYTE
+                      00050                 
+                      00051                 ;DADOS
+  00000025            00052                 BITS
+  00000026            00053                 CONT_START_SYNC_MASTER
+  00000027            00054                 DELAY_SYNC
+                      00055                 
+  00000028            00056                 DADO_SINALIZACAO
+  00000029            00057                 DADO_SENSORES
+                      00058                 
+  0000002A            00059                 MONITORA_BITS
+  0000002B            00060                 ESTADO_SINALIZACAO
+  0000002C            00061                 ENDERECO_SINALIZACAO
+  0000002D            00062                 ENDERECO_SENSORES
+  0000002E            00063                 VALORES_SENSORES
+  0000002F            00064                 CONT_2
+  00000030            00065                 CONT_1
+  00000031            00066                 BARRAMENTO ; REGISTRADOR DE DADOS SOBRE O BARRAMENTO
+                      00067                 
+  00000032            00068                 CONTADOR_START_SYNC
+  00000033            00069                 PROPRIETARIO
+  00000034            00070                 CONTADOR_START_BIT
+  00000035            00071                 CONTADOR_BYTES
+  00000036            00072                 CONTADOR_BITS
+  00000037            00073                 ESTAGIO
+  00000038            00074                 ENDERECO_ENVIAR
+                      00075                 
+  00000039            00076                 ALERTA_ON
+                      00077 
+                      00078                 ;NOVAS VARIÁVEIS
+                      00079 
+                      00080         ENDC                    ;FIM DO BLOCO DE MEMÓRIA
+                      00081                 
+                      00082         CBLOCK  0x40
+  00000040            00083                 BYTE_0
+  00000041            00084                 ENDERECO
+  00000042            00085                 DADO
+                      00086         ENDC
+                      00087         
+                      00088 ;       CBLOCK  0x50
+                      00089 ;               MBYTE_0
+                      00090 ;               ANDRESS_MASTER
+                      00091 ;               ANDRESS_SUBSISTEMA
+                      00092 ;               DADO_MASTER
+                      00093 ;       ;NOVAS VARIÁVEIS
+                      00094 ;
+                      00095 ;       ENDC
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00096 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00097 ;*                        FLAGS INTERNOS                           *
+                      00098 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00099 ; DEFINIÇÃO DE TODOS OS FLAGS UTILIZADOS PELO SISTEMA
+                      00100 #DEFINE FLAG_COL_START_BIT  BARRAMENTO, 3   ; BIT REFERENTE A COLISAO NO START_BIT
+                      00101 #DEFINE FLAG_COL_ENVIAR_BIT BARRAMENTO, 4   ; BIT REFERENTE A COLISAO AO ENVIAR BIT
+                      00102 #DEFINE FLAG_COLISAO        BARRAMENTO, 1   ; BIT REFERENTE A COLISAO
+                      00103 #DEFINE FLAG_BYTE_0         ESTAGIO, 1      ; FLAG REFERENTE AO ESTAGIO DO BYTE_0
+                      00104 #DEFINE FLAG_ENDERECO       ESTAGIO, 2      ; FLAG REFERENTE AO ESTAGIO DO ENDERECO
+                      00105 #DEFINE FLAG_DADO           ESTAGIO, 3      ; FLAG REFERENTE AO ESTAGIO DO DADO
+                      00106 
+                      00107 #DEFINE FAROL               ESTADO_SINALIZACAO, 0
+                      00108 #DEFINE RE                  ESTADO_SINALIZACAO, 1
+                      00109 #DEFINE FREIO               ESTADO_SINALIZACAO, 2
+                      00110 #DEFINE SETA_ESQUERDA       ESTADO_SINALIZACAO, 3
+                      00111 #DEFINE SETA_DIREITA        ESTADO_SINALIZACAO, 4
+                      00112 #DEFINE REQUISICAO          DADO_SINALIZACAO, 5
+                      00113         
+                      00114 #DEFINE SENSOR_1            PORTB, RB4
+                      00115 #DEFINE SENSOR_2            PORTB, RB5
+                      00116 #DEFINE SENSOR_3            PORTB, RB6
+                      00117 #DEFINE SENSOR_4            PORTB, RB7
+                      00118 #DEFINE PWM_FREIO           .5              ;   PWM DO FREIO DESACIONADO
+                      00119 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00120 ;*                         CONSTANTES                              *
+                      00121 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00122 ; DEFINIÇÃO DE TODAS AS CONSTANTES UTILIZADAS PELO SISTEMA
+                      00123 
+                      00124 ;A PARTIR DO ENDEREÇO ZERO DA EEPROM, DADOS EM ORDEM ALEATÓRIA
+2100                  00125         ORG 0x2100
+2100   0003 0002 0005 00126         DE      0X03,0X02,0X05,0X40     ; VALORES FIXOS DO SUBSISTEMA
+       0040 
+                      00127            ;    BYTE END1 END2 DADO
+                      00128            ; END1 = DIREÇÃO
+                      00129            ; END2 = SINALIZAÇÃO
+                      00130 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00131 ;*                           ENTRADAS                              *
+                      00132 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00133 ; DEFINIÇÃO DE TODOS OS PINOS QUE SERÃO UTILIZADOS COMO ENTRADA
+                      00134 ; RECOMENDAMOS TAMBÉM COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
+                      00135 
+                      00136 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00137 ;*                           SAÍDAS                                *
+                      00138 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00139 ; DEFINIÇÃO DE TODOS OS PINOS QUE SERÃO UTILIZADOS COMO SAÍDA
+                      00140 ; RECOMENDAMOS TAMBÉM COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
+                      00141 
+                      00142 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00143 ;*                       VETOR DE RESET                            *
+                      00144 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00145 
+0000                  00146         ORG     0x00                    ;ENDEREÇO INICIAL DE PROCESSAMENTO
+0000   2908           00147         GOTO    INICIO
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00148         
+                      00149 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00150 ;*                    INÍCIO DA INTERRUPÇÃO                        *
+                      00151 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00152 ; ENDEREÇO DE DESVIO DAS INTERRUPÇÕES. A PRIMEIRA TAREFA É SALVAR OS
+                      00153 ; VALORES DE "W" E "STATUS" PARA RECUPERAÇÃO FUTURA
+                      00154 
+0004                  00155         ORG     0x04                    ;ENDEREÇO INICIAL DA INTERRUPÇÃO
+0004   00A0           00156         MOVWF   W_TEMP          ;COPIA W PARA W_TEMP
+0005   0E03           00157         SWAPF   STATUS,W
+0006   00A1           00158         MOVWF   STATUS_TEMP     ;COPIA STATUS PARA STATUS_TEMP
+0007   110B           00159         BCF     INTCON, T0IF
+                      00160 ;       BANK1
+                      00161 ;       BSF     TRISB, 0        ; COLOCA O RB0 COMO ENTRADA (ALTA IMPEDANCIA)
+                      00162 ;       BANK0
+                      00163         ;BSF    GPIO, GP0
+0008   180B           00164         BTFSC   INTCON, RBIF
+0009   287F           00165             GOTO    TRATA_SENSORES
+                      00166 
+                      00167 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00168 ;*                    ROTINA DE INTERRUPÇÃO                        *
+                      00169 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00170 ; AQUI SERÁ ESCRITA AS ROTINAS DE RECONHECIMENTO E TRATAMENTO DAS
+                      00171 ; INTERRUPÇÕES
+000A   18B1           00172     BTFSC       FLAG_COLISAO
+000B   280D           00173         GOTO    TRATAR_COLISAO
+000C   2814           00174         GOTO    INICIO_START_SYNC
+                      00175 
+000D                  00176 TRATAR_COLISAO
+000D   1DB1           00177         BTFSS       FLAG_COL_START_BIT
+000E   2850           00178             GOTO    LER_BITS
+000F   2810           00179             GOTO    INIC_CONT_START_SYNC
+                      00180             
+0010                  00181 INIC_CONT_START_SYNC
+Message[305]: Using default destination of 1 (file).
+0010   0AB2           00182         INCF    CONTADOR_START_SYNC
+0011   309B           00183         MOVLW   .155
+0012   0081           00184         MOVWF   TMR0
+0013   2818           00185         GOTO    START_SYNC
+                      00186 ; INTERRUPÇÕES
+0014                  00187 INICIO_START_SYNC
+0014   3008           00188         MOVLW   .8
+0015   00B6           00189         MOVWF   CONTADOR_BITS           ; TEM QUE TER ISSO PARA QUE O CONTADOR DE BITS COMECE COM SE NAO
+                             ELE FICA PRESO NO LER BITS
+0016   301E           00190         MOVLW   .30;.55             ; SERÁ VISTO QUANTAS VEZES O TIMER0 ESTOURARÁ
+0017   0081           00191         MOVWF   TMR0
+0018                  00192 START_SYNC
+0018   1806           00193         BTFSC   PORTB, RB0;GP2
+0019   2822           00194         GOTO    VERIFICA_SLAVER     ; QUANDO O GP2 DESCER, É TESTADO SE É SLAVE OU MASTER 
+001A   190B           00195         BTFSC   INTCON, T0IF        ; VERIFICA SE HOUVE ESTOURO DO TIMER 0
+001B   281D           00196         GOTO    INCREMENTA_LIMPA    ; INCREMENTA O CONTADOR DO START_SYNC
+001C   2818           00197         GOTO    START_SYNC          ; SE NÃO, REINICIA
+                      00198         
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+001D                  00199 INCREMENTA_LIMPA
+001D   1932           00200         BTFSC   CONTADOR_START_SYNC, 2  ; VERIFICA E PASSOU DE 3 O INCREMTETO, SE SIM, SAI
+001E   28A8           00201             GOTO        SAI_INT
+Message[305]: Using default destination of 1 (file).
+001F   0AB2           00202         INCF    CONTADOR_START_SYNC
+0020   110B           00203         BCF     INTCON, T0IF
+0021   2814           00204         GOTO    INICIO_START_SYNC
+                      00205         
+0022                  00206 VERIFICA_SLAVER
+0022   3040           00207         MOVLW   0x40                    ; ENDEREÇO APONTADO CASO SEJA SLAVE NA MEMORIA
+0023   0084           00208         MOVWF   FSR                     ; PONTEIRO APONTANDO NO ENDEREÇO 0x30 NA MEMÓRIA RAM
+0024   3003           00209         MOVLW   .3                      ; CONTADOR DE BYTES, REFERENTE AO BYTE 0, MELHORAR ESSE DADO
+0025   00B5           00210         MOVWF   CONTADOR_BYTES
+Message[305]: Using default destination of 1 (file).
+0026   0BB2           00211         DECFSZ  CONTADOR_START_SYNC     ; DECREMENTA O CONTADOR E VERIFICA SE ELE É ZERO,
+0027   282A           00212         GOTO    VERIFICA_MASTER         ; SE FOR ZERO, O TIMER ZERO ESTOUROU 1 VEZ SÓ, ENTÃO É SLAVE
+                      00213         ;BSF    PROPRIETARIO, 0         ; BIT 0 REFERENTE AO SLAVER
+0028   1033           00214         BCF     PROPRIETARIO, 0         ; LIMPA QUE NÃO É MASTER
+                      00215         ;BSF    GPIO,GP0        
+0029   282F           00216         GOTO    START_BIT_INICIO        ; INICIA A VERIFICAÇÃO DO START BIT
+                      00217         
+002A                  00218 VERIFICA_MASTER                         ; VERIFICA SE É MASTER
+Message[305]: Using default destination of 1 (file).
+002A   0BB2           00219         DECFSZ  CONTADOR_START_SYNC
+002B   28A8           00220         GOTO    SAI_INT                 ; DEU PROBLEMA, NÃO É UM START_SYNC
+                      00221         ;BCF    PROPRIETARIO, 0         ; LIMPA QUE NÃO É SLAVE
+002C   1433           00222         BSF     PROPRIETARIO, 0         ; BIT 1 REFERENTE AO MASTER
+002D   1705           00223         BSF     PORTA, RA6
+                      00224         ;BSF    GPIO,GP0
+                      00225         ;MOVLW  0x40
+                      00226 
+                      00227         ;MOVWF  FSR
+                      00228         ;MOVLW  .4
+                      00229         ;MOVWF  CONTADOR_BYTES
+002E   282F           00230         GOTO    START_BIT_INICIO
+                      00231 ;==================================================
+002F                  00232 START_BIT_INICIO
+                      00233 
+                      00234         ;BSF    GPIO, GP1               ; CASO O BARRAMENTO NÃO SUBA, ELE FOI TRATADO ANTERIORMENTE NO S
+                            TART_SYNC. SE O BARRAMENTO FICAR EM LOW, TODO O BARRAMENTO ESTARA COM PROBLEMAS
+002F   1C06           00235         BTFSS   PORTB, RB0;GP2          ; ESPERA O BARRAMENTO SUBIR
+0030   282F           00236         GOTO    START_BIT_INICIO        
+0031                  00237 START_BIT_CONFIGURA                     ; CONFIGURA O REINICIO DA CONTAGEM DO START BIT PARA O CONTADOR 
+                            QUANDO O TIMER ZERO ESTOURAR
+0031   110B           00238         BCF     INTCON, T0IF
+0032   3091           00239         MOVLW   .145                    ; O TMR0 ESTOURARÁ A CADA 130 US
+0033   0081           00240         MOVWF   TMR0
+0034                  00241 START_BIT
+0034   1C06           00242         BTFSS   PORTB, RB0;GP2
+0035   283D           00243         GOTO    VERIFICA_START_BIT
+0036   190B           00244         BTFSC   INTCON, T0IF            ; VERIFICA SE O TIMER ZERO ESTOUROU
+0037   2839           00245         GOTO    INCREMENTA_START_BIT    ; SE SIM, INCREMENTA O CONTADOR DO START BIT
+0038   2834           00246         GOTO    START_BIT               ; SE NÃO, CONTINUA A CONTAGEM
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0039                  00247 INCREMENTA_START_BIT
+                      00248          ;BSF   GPIO, GP4
+0039   18B4           00249         BTFSC   CONTADOR_START_BIT, 1   ; TESTA SE HOUVE MAIS DE UM ESTOURO DO TIMER0, SE SIM, SAI DA IN
+                            TERRUÇÃO
+003A   28A8           00250             GOTO        SAI_INT
+Message[305]: Using default destination of 1 (file).
+003B   0AB4           00251         INCF    CONTADOR_START_BIT      ; INCREMENTA O CONTADOR DO START BIT
+003C   2831           00252         GOTO    START_BIT_CONFIGURA 
+003D                  00253 VERIFICA_START_BIT
+                      00254 
+Message[305]: Using default destination of 1 (file).
+003D   0BB4           00255         DECFSZ  CONTADOR_START_BIT      ; VERIFICA SE HOUVE APENAS UM ESTOURO NO TIMER 0 NA SUBIDA DO ST
+                            ART BIT
+003E   28A8           00256         GOTO    SAI_INT                 ; SE HOUVE MAIS DE 1 OU MENOS, NÃO CARACTERIZA UM START BIT E SA
+                            I DA INTERRUPÇÃO
+003F   2840           00257         GOTO    START_BIT_LOW_INICIO            ; SE HOUVE APENAS 1 ESTOURO, CONTINUA A VERIFICAÇÃO PARA
+                             O TEMPO EM LOW
+                      00258 
+                      00259         
+0040                  00260 START_BIT_LOW_INICIO                    ; CODIGO PARECIDO COM A VERIFICAÇÃO DO TEMPO EM ALTA DO START BI
+                            T
+                      00261         ; BSF   GPIO, GP4
+0040   110B           00262         BCF     INTCON, T0IF            ; MAS AGORA É TESTADO COM O TEMPO EM LOW
+0041   3091           00263         MOVLW   .145
+0042   0081           00264         MOVWF   TMR0
+0043                  00265 START_BIT_LOW
+0043   1806           00266         BTFSC   PORTB, RB0;GP2
+0044   28A8           00267         GOTO    SAI_INT                 
+0045   190B           00268         BTFSC   INTCON, T0IF
+0046   2848           00269         GOTO    ESPERA_SUBIDA_START_BIT
+0047   2843           00270         GOTO    START_BIT_LOW
+                      00271         
+0048                  00272 ESPERA_SUBIDA_START_BIT
+0048   110B           00273         BCF     INTCON, T0IF
+0049   30E1           00274         MOVLW   .225                    ; O TMR0 ESTOURARÁ A CADA 130 US
+004A   0081           00275         MOVWF   TMR0
+004B                  00276 ESPERA_SUBIDA_ST        
+004B   1806           00277         BTFSC   PORTB, RB0;GP2
+004C   2850           00278         GOTO    LER_BITS
+004D   190B           00279         BTFSC   INTCON, T0IF
+004E   28A8           00280         GOTO    SAI_INT                 ; SE O BARRAMENTO NÃO SUBIR NO INTERVALO DE TEMPO DADO, NÃO CARA
+                            CTERIZA UM START BIT
+004F   284B           00281         GOTO    ESPERA_SUBIDA_ST
+                      00282         
+                      00283 ;====================================
+                      00284         
+0050                  00285 LER_BITS
+                      00286         ;BSF    GPIO, GP2 ; APAGAR
+0050   110B           00287         BCF     INTCON, T0IF            ; LIMPA A FLAG DE ESTOURO DO TIMER ZERO
+0051   30E8           00288         MOVLW   .232;.234               ; O TIMER ZERO ESTOURARÁ A CADA 30 US (BASE), QUANDO HOUVER O ES
+                            TOURO, É VERIFICADO
+0052   0081           00289         MOVWF   TMR0                    ; O ESTADO DO BARRAMENTO, SE O BARRAMENTO ESTIVER EM ALTA, SIGNI
+                            FICA QUE O BARRAMENTO AINDA NÃO BAIXOU, OU SEJA, CARACTERIZA O BIT 1 (40(H)) > 30 US
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0053   30F8           00290         MOVLW   .248                    ; PASSA O VALOR PARA O MONITORA_BITS 
+0054   00AA           00291         MOVWF   MONITORA_BITS           ; QUANDO CHEGAR EM 255 ESTOURA
+0055                  00292 LER_BITS_CONTINUA                       ; CASO O BARRAMENTO ESTEJA EM LOW, SIGNIFICA QUE O BARRAMENTO JÁ
+                             FOI PARA LOW, OU SEJA, O BIT LIDO É O ZERO (20(H) + 10(L)) = 30 US
+                      00293         ;BTFSS  GPIO, GP2
+                      00294         ;GOTO   VERIFICA_1_0
+                      00295         ;BTFSC  INTCON, T0IF            ; VERIFICA SE HOUVE ESTOURO DO TIMER ZERO
+                      00296         ;GOTO   VERIFICA_1_0            ; VERIFICA SE O BIT LIDO É ZERO OU UM
+Message[305]: Using default destination of 1 (file).
+0055   0FAA           00297         INCFSZ  MONITORA_BITS           ; INCREMENTA, SE ESTOURAR, É SINAL QUE HOUVE ALGUM ERRO, E O PRO
+                            GRAMA SAI
+0056   2858           00298             GOTO    $+2                 ; SE NÃO ESTOURAR, CONTINUA
+0057   28A8           00299             GOTO    SAI_INT             ; SE ESTOURAR, SAI DA INTERRUPÇÃO
+                      00300         
+0058   1806           00301         BTFSC   PORTB, RB0;GP2
+0059   2855           00302             GOTO        LER_BITS_CONTINUA
+005A   285B           00303             GOTO        VERIFICA_1_0
+                      00304         
+                      00305         
+                      00306         
+                      00307 ;INCREMENTA_CONTADOR_BITS
+                      00308 ;       INCF    CONTADOR_TEMPO_BITS
+                      00309 ;       GOTO    LER_BITS
+005B                  00310 VERIFICA_1_0                ; VERIFICA SE É O BIT 1 OU 0
+005B   1D0B           00311         BTFSS   INTCON, T0IF    ;GPIO, GP2
+005C   285E           00312         GOTO    BIT_0
+005D   286B           00313         GOTO    BIT_1
+                      00314 
+005E                  00315 BIT_0
+005E   1003           00316         BCF     STATUS, C
+Message[305]: Using default destination of 1 (file).
+005F   0D80           00317         RLF     INDF
+                      00318         
+                      00319         
+                      00320         
+Message[305]: Using default destination of 1 (file).
+0060   0BB6           00321         DECFSZ  CONTADOR_BITS           ; DECREMENTA O CONTADOR DE BITS 
+0061   2868           00322         GOTO    ESPERA_BIT_0_MUDAR      ; SE NÃO FOR ZERO, ESPERA O BIT ZERO TERMINAR NO BARRAMENTO PARA
+                             LEITURA DO PRÓXIMO
+Message[305]: Using default destination of 1 (file).
+0062   0A84           00323         INCF    FSR                     ; SE ACABOU, INCREMENTA O PONTEIRO PARA O PROXIMO ENDEREÇO DE ME
+                            MÓRIA       
+                      00324         
+                      00325         ;BSF    CONTADOR_BITS, 3        ; COLOCO O VALOR 8 NO CONTADOR DE BITS QUE ANTES ESTAVA ZERADO
+0063   3008           00326         MOVLW   .8
+0064   00B6           00327         MOVWF   CONTADOR_BITS
+                      00328         
+Message[305]: Using default destination of 1 (file).
+0065   0BB5           00329         DECFSZ  CONTADOR_BYTES          ; DECREMENTA O CONTADOR DE BYTES QUE TEM QUE SER LIDO
+0066   2868           00330         GOTO    ESPERA_BIT_0_MUDAR      ; CASO NÃO SEJA ZERO, ESPERA O BIT ZERO TERMINAR NO BARRAMENTO P
+                            ARA LEITURA DO PRÓXIMO
+0067   2878           00331         GOTO    CONCLUIDA_LEITURA       ; CASO SEJA ZERO, A LEITURA DOS DADOS DO BARRAMENTO ESTÁ FINALIZ
+                            ADO.
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00332         
+0068                  00333 ESPERA_BIT_0_MUDAR              
+0068   1C06           00334         BTFSS   PORTB, RB0;GP2
+0069   2868           00335         GOTO    ESPERA_BIT_0_MUDAR
+006A   2850           00336         GOTO    LER_BITS
+                      00337 
+006B                  00338 BIT_1
+006B   1403           00339         BSF     STATUS, C
+Message[305]: Using default destination of 1 (file).
+006C   0D80           00340         RLF     INDF
+                      00341         
+                      00342         
+                      00343         
+                      00344         
+Message[305]: Using default destination of 1 (file).
+006D   0BB6           00345         DECFSZ  CONTADOR_BITS
+006E   2875           00346         GOTO    ESPERA_BIT_1_MUDAR
+Message[305]: Using default destination of 1 (file).
+006F   0A84           00347         INCF    FSR
+                      00348         ;BSF    GPIO, GP4
+                      00349         
+                      00350         ;BSF    CONTADOR_BITS, 3        ; COLOCO O VALOR 8 NO CONTADOR DE BITS QUE ANTES ESTAVA ZERADO
+0070   3008           00351         MOVLW   .8
+0071   00B6           00352         MOVWF   CONTADOR_BITS
+                      00353         
+Message[305]: Using default destination of 1 (file).
+0072   0BB5           00354         DECFSZ  CONTADOR_BYTES
+0073   2875           00355         GOTO    ESPERA_BIT_1_MUDAR
+0074   2878           00356         GOTO    CONCLUIDA_LEITURA
+                      00357         
+0075                  00358 ESPERA_BIT_1_MUDAR
+                      00359         ;BTFSC  GPIO, GP2
+                      00360         ;GOTO   ESPERA_BIT_1_MUDAR
+                      00361 
+0075   1C06           00362         BTFSS   PORTB, RB0;GP2
+0076   2875           00363         GOTO    $-1
+0077   2850           00364         GOTO    LER_BITS
+                      00365         
+0078                  00366 CONCLUIDA_LEITURA
+                      00367         ;BSF    BARRAMENTO, 6   ; SINALIZA QUE A LEITURA FOI FINALIZADA
+0078   1BC2           00368         BTFSC   DADO, 7
+0079   288B           00369             GOTO    COLISAO     ; SE HOUVER COLISÃO, TEM QUE LIGAR ALERTA, FREIO E PARAR
+007A   1C33           00370         BTFSS   PROPRIETARIO, 0 ; É MASTER?
+007B   28A8           00371             GOTO    SAI_INT
+                      00372             ;GOTO    PASSA_DADO_SINALIZACAO
+                      00373         ;+BSF   PORTA, RA6
+                      00374         ; TESTA SE O VALOR NO DADO É MENOR DO QUE 15 [ X01XXXXX ] -> ILUMINAÇÃO 
+                      00375         ;MOVLW  B'01100000'     ; PASSA A MASCARA PARA O WORK PARA FAZER O AND
+                      00376         ;ANDWF  DADO, 0         ; FAÇO O AND COM O DADO, PARA PEGAR SOMENTE OS BITS 5 E 6 E SALVAR NO WO
+                            RK O RESULTADO
+                      00377         ;XORLW  B'00100000'     ; FAÇO OUTRO XOR COM O WORK PARA CHECAR SE SOMENTE O BIT 5 É 1, CASO SEJ
+                            A, O RESULTADO É ZERO
+007C   1F42           00378         BTFSS   DADO, 6         ; TESTA SE O BIT 6 ESTA EM 1
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+007D   2885           00379             GOTO    TESTA_SENSORES      ; SE NÃO DEU, O VALOR NÃO INTERESSA AO SUBSISTEMA DE SINALIZAÇÃO
+007E   2897           00380             GOTO    PASSA_DADO_SINALIZACAO
+                      00381 
+007F                  00382 TRATA_SENSORES
+007F   30F0           00383         MOVLW   B'11110000'
+0080   0506           00384         ANDWF   PORTB, 0        ; PEGA OS VALORES REFERENTE DO RB<7:4> E JOGA NO WORD 
+0081   00AE           00385         MOVWF   VALORES_SENSORES; SALVA ESSES VALORES NO VALOR SENSORES
+0082   17B1           00386         BSF     BARRAMENTO, 7   ; SINALIZA QUE HOUVE UMA MUDANÇA NOS VALORES DOS SENSORES
+0083   100B           00387         BCF     INTCON, RBIF    ; LIMPA A SINALIZAÇÃO DE INTERRUPÇÃO DOS SENSORES, SO LIMPA ESSA FLAG AQ
+                            UI
+0084   28A8           00388         GOTO    SAI_INT
+                      00389         
+                      00390 
+0085                  00391 TESTA_SENSORES
+                      00392         ; TESTA SE O VALOR NO DADO É MENOR DO QUE 15 [ X01XXXXX ] -> ILUMINAÇÃO 
+0085   30F0           00393         MOVLW   B'11110000'     ; PASSA A MASCARA PARA O WORK PARA FAZER O AND
+0086   0542           00394         ANDWF   DADO, 0         ; FAÇO O AND COM O DADO, PARA PEGAR SOMENTE OS BITS 5 E 6 E SALVAR NO WO
+                            RK O RESULTADO
+0087   3A10           00395         XORLW   B'00010000'     ; FAÇO OUTRO XOR COM O WORK PARA CHECAR SE SOMENTE O BIT 5 É 1, CASO SEJ
+                            A, O RESULTADO É ZERO
+0088   1D03           00396         BTFSS   STATUS, Z       ; TESTA SE O RESULTADO DEU ZERO
+0089   28A8           00397             GOTO    SAI_INT     ; SE NÃO DEU, O VALOR NÃO INTERESSA AO SUBSISTEMA DE TRAÇÃO
+008A   28A5           00398             GOTO    PASSA_DADO_SENSORES
+008B                  00399 COLISAO
+008B   301C           00400         MOVLW   B'00011100'             ; FREIO E ALERTA ACIONADOS
+008C   04A8           00401         IORWF   DADO_SINALIZACAO, 1     ; FAZ O OR COM O ULTIMO DADO ENVIADO AO SUBSISTEMA PARA QUE ACIO
+                            NE O ALERTA E O FREIO
+008D   12A8           00402         BCF     DADO_SINALIZACAO, 5     ; TESTE
+008E   0828           00403         MOVF    DADO_SINALIZACAO, W
+008F   00AB           00404         MOVWF   ESTADO_SINALIZACAO
+0090   16B1           00405         BSF     BARRAMENTO, 5
+0091   1905           00406         BTFSC   PORTA, RA2
+0092   1585           00407             BSF     PORTA, RA3
+0093   1D05           00408         BTFSS   PORTA, RA2
+0094   1185           00409             BCF     PORTA, RA3
+                      00410         
+0095   1439           00411         BSF     ALERTA_ON, 0        ; SINALIZA QUE O ALERTA TEM QUE SER INICIALIZADO ( SINCRONIZADO )
+                      00412             
+0096   28A8           00413         GOTO    SAI_INT
+0097                  00414 PASSA_DADO_SINALIZACAO                  ; CASO SEJA ZERO, O VALOR DO DADO É PASSADO PARA A VARIAVEL DADO
+                            _LIDO
+0097   0842           00415         MOVF    DADO, W
+0098   00A8           00416         MOVWF   DADO_SINALIZACAO        ; PASSA O DADO LIDO NO BARRAMENTO PARA A VARIAVEL DADO_LIDO
+0099   1EA8           00417         BTFSS   DADO_SINALIZACAO, 5     ; TESTA SE É REQUISIÇÃO
+009A   00AB           00418             MOVWF   ESTADO_SINALIZACAO
+009B   3018           00419         MOVLW   B'00011000'
+009C   0528           00420         ANDWF   DADO_SINALIZACAO, 0
+009D   3A18           00421         XORLW   B'00011000'
+009E   1D03           00422         BTFSS   STATUS, Z
+009F   28A8           00423             GOTO    SAI_INT
+                      00424         ;BSF    BARRAMENTO, 5           ; SINALIZA QUE HOUVE UM DADO PARA O SUBSISTEMA DE SINALIZAÇÃO
+                      00425 ;       BSF     PORTA, RA2
+                      00426 ;       BSF     PORTA, RA3
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00A0   1905           00427         BTFSC   PORTA, RA2
+00A1   1585           00428             BSF     PORTA, RA3
+00A2   1D05           00429         BTFSS   PORTA, RA2
+00A3   1185           00430             BCF     PORTA, RA3
+00A4   28A8           00431         GOTO    SAI_INT
+                      00432         
+00A5                  00433 PASSA_DADO_SENSORES                     ; CASO SEJA ZERO, O VALOR DO DADO É PASSADO PARA A VARIAVEL DADO
+                            _LIDO
+00A5   0842           00434         MOVF    DADO, W
+00A6   00A9           00435         MOVWF   DADO_SENSORES   ; PASSA O DADO LIDO NO BARRAMENTO PARA A VARIAVEL DADO_LIDO
+00A7   16B1           00436         BSF     BARRAMENTO, 5   ; SINALIZA QUE HOUVE UM DADO PARA O SUBSISTEMA DE SENSORES
+                      00437 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00438 ;*                 ROTINA DE SAÍDA DA INTERRUPÇÃO                  *
+                      00439 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00440 ; OS VALORES DE "W" E "STATUS" DEVEM SER RECUPERADOS ANTES DE 
+                      00441 ; RETORNAR DA INTERRUPÇÃO
+                      00442 
+00A8                  00443 SAI_INT
+00A8   01B2           00444         CLRF    CONTADOR_START_SYNC
+00A9   01B4           00445         CLRF    CONTADOR_START_BIT
+00AA   108B           00446         BCF     INTCON, INTF            ; LIMPA QUE HOUVE INTERRUPÇÃO DO GP2
+00AB   10B1           00447         BCF     BARRAMENTO, 1
+00AC   10B1           00448         BCF     FLAG_COLISAO
+00AD   11B1           00449         BCF     FLAG_COL_START_BIT
+00AE   1331           00450         BCF     BARRAMENTO, 6           ; LIMPA A FLAG
+00AF   16B1           00451         BSF     BARRAMENTO, 5
+                      00452         ;BCF    BARRAMENTO, 4
+                      00453         ;BCF    BARRAMENTO, 2
+                      00454         ;CLRF   BARRAMENTO
+                      00455         ;BCF    GPIO, GP4
+                      00456 ;       BANK1
+                      00457 ;       BSF     TRISB, 0        ; COLOCA O RB0 COMO ENTRADA (ALTA IMPEDANCIA)
+                      00458 ;       BANK0
+                      00459         
+                      00460         
+00B0   0E21           00461         SWAPF   STATUS_TEMP,W
+00B1   0083           00462         MOVWF   STATUS          ;MOVE STATUS_TEMP PARA STATUS
+00B2   0EA0           00463         SWAPF   W_TEMP,F
+00B3   0E20           00464         SWAPF   W_TEMP,W        ;MOVE W_TEMP PARA W
+00B4   0009           00465         RETFIE
+                      00466 
+                      00467 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00468 ;*                       ROTINAS E SUBROTINAS                      *
+                      00469 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00470 ; CADA ROTINA OU SUBROTINA DEVE POSSUIR A DESCRIÇÃO DE FUNCIONAMENTO
+                      00471 ; E UM NOME COERENTE ÀS SUAS FUNÇÕES.
+00B5                  00472 TRATA_DADOS_SINALIZACAO
+                      00473         ; LER E TRATA
+00B5   1AA8           00474         BTFSC   REQUISICAO              ; TESTA SE HOUVE UMA REQUISIÇÃO
+00B6   28FD           00475             GOTO    REQUISICAO_ILUMINACAO
+                      00476         ; TEM UMA INTERRUPÇÃO AQUI E BUGA 
+                      00477         ;MOVF   DADO_SINALIZACAO, W
+                      00478         ;MOVWF  ESTADO_SINALIZACAO
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00479         
+00B7   182B           00480         BTFSC   FAROL                   ; TESTA O FAROL
+00B8   28D0           00481             GOTO    LIGAR_FAROL         ; LIGA O FAROL
+00B9   28D2           00482             GOTO    DESLIGAR_FAROL      ; DESLIGA O FAROL
+00BA                  00483 FIM_FAROL
+00BA   18AB           00484         BTFSC   RE                      ; TESTA A RÉ
+00BB   28D4           00485             GOTO    LIGAR_RE            ; LIGA A LUZ DE RE
+00BC   28D6           00486             GOTO    DESLIGAR_RE         ; DESLIGA A LUZ DE RE
+00BD                  00487 FIM_RE
+00BD   192B           00488         BTFSC   FREIO                   ; TESTA O FREIO
+00BE   28CA           00489             GOTO    FREIO_ACIONADO
+00BF   28CD           00490             GOTO    FREIO_DESACIONADO
+00C0                  00491 FIM_FREIO
+                      00492         
+00C0   1DAB           00493         BTFSS   SETA_ESQUERDA           ; TESTA O ALERTA
+00C1   28C4           00494             GOTO    FIM_ALERTA
+00C2   1A2B           00495         BTFSC   SETA_DIREITA
+00C3   28D8           00496             GOTO    LIGA_ALERTA
+                      00497             ;GOTO    DESLIGA_ALERTA
+00C4                  00498 FIM_ALERTA
+00C4   19AB           00499         BTFSC   SETA_ESQUERDA           ; TESTA A SETA ESQUERDA
+00C5   28E7           00500             GOTO    LIGA_SETA_ESQUERDA  ;
+00C6   28ED           00501             GOTO    DESLIGA_SETA_ESQUERDA
+00C7                  00502 FIM_SETA_ESQUERDA
+00C7   1A2B           00503         BTFSC   SETA_DIREITA            ; TESTA O FAROL
+00C8   28EF           00504             GOTO    LIGA_SETA_DIREITA   ;
+00C9   28F5           00505             GOTO    DESLIGA_SETA_DIREITA
+                      00506 
+                      00507 
+                      00508 ;----------------------------  
+00CA                  00509 FREIO_ACIONADO
+                      00510          ; TRATA O FREIO
+00CA   3063           00511          MOVLW  .99                     ; PWM EM 99%
+00CB   0095           00512          MOVWF  CCPR1L
+                      00513          
+00CC   28C0           00514          GOTO   FIM_FREIO
+00CD                  00515 FREIO_DESACIONADO
+                      00516          ; TRATA O FREIO
+00CD   3005           00517          MOVLW  PWM_FREIO                       ; PWM EM 30%
+00CE   0095           00518          MOVWF  CCPR1L
+                      00519          
+00CF   28C0           00520          GOTO   FIM_FREIO
+                      00521 ;----------------------------
+00D0                  00522 LIGAR_FAROL
+00D0   1405           00523          BSF    PORTA, RA0
+00D1   28BA           00524          GOTO   FIM_FAROL
+00D2                  00525 DESLIGAR_FAROL
+00D2   1005           00526          BCF    PORTA, RA0
+00D3   28BA           00527          GOTO   FIM_FAROL
+                      00528 ;------------------------------
+00D4                  00529 LIGAR_RE
+00D4   1485           00530          BSF        PORTA,  RA1
+00D5   28BD           00531          GOTO       FIM_RE
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00D6                  00532 DESLIGAR_RE
+00D6   1085           00533          BCF        PORTA,  RA1
+00D7   28BD           00534          GOTO       FIM_RE
+                      00535 ;-----------------------------
+00D8                  00536 LIGA_ALERTA
+                      00537           ; TRATA O ALERTA
+00D8   1839           00538         BTFSC       ALERTA_ON, 0
+00D9   28DF           00539             GOTO    SINCRONIZA_LEDS         ; SINALIZA QUE O ALERTA TEM QUE SER INICIALIZADO ( SINCRONIZ
+                            ADO )
+00DA                  00540 FIM_SINCRONIZA_LEDS
+                      00541         
+00DA   1C0C           00542         BTFSS       PIR1, TMR1IF
+00DB   2937           00543             GOTO        FIM_TRATA_SINALIZACAO
+                      00544             ;GOTO       MAIN
+00DC   300C           00545         MOVLW   B'00001100'
+00DD   0685           00546         XORWF   PORTA, 1
+00DE   28F7           00547         GOTO    INICIALIZA_TIMER1
+00DF                  00548 SINCRONIZA_LEDS
+00DF   1505           00549         BSF     PORTA, RA2
+00E0   1585           00550         BSF     PORTA, RA3
+00E1   1039           00551         BCF     ALERTA_ON, 0                ; SINALIZA QUE JA FOI SINCRONIZADO OS LEDS
+00E2   28DA           00552         GOTO    FIM_SINCRONIZA_LEDS
+                      00553 
+00E3                  00554 DESLIGA_ALERTA
+00E3   1105           00555         BCF     PORTA, RA2
+00E4   1185           00556         BCF     PORTA, RA3
+00E5   1439           00557         BSF     ALERTA_ON, 0        ; SINALIZA QUE O ALERTA TEM QUE SER INICIALIZADO ( SINCRONIZADO )
+00E6   28C4           00558         GOTO    FIM_ALERTA
+                      00559 ;---------------------------------
+00E7                  00560 LIGA_SETA_ESQUERDA
+00E7   1185           00561         BCF         PORTA, RA3                  ; DESLIGA A SETA DIREITA SEMPRE
+00E8   1C0C           00562         BTFSS       PIR1, TMR1IF
+00E9   2937           00563             GOTO        FIM_TRATA_SINALIZACAO
+                      00564             ;GOTO       MAIN
+00EA   3004           00565         MOVLW   B'00000100'
+00EB   0685           00566         XORWF   PORTA, 1
+                      00567         ; TRATA A SETA ESQUERDA
+00EC   28F7           00568         GOTO    INICIALIZA_TIMER1
+00ED                  00569 DESLIGA_SETA_ESQUERDA
+00ED   1105           00570         BCF     PORTA, RA2
+00EE   28C7           00571         GOTO    FIM_SETA_ESQUERDA
+                      00572         
+00EF                  00573 LIGA_SETA_DIREITA
+00EF   1105           00574         BCF         PORTA, RA2                  ; DESLIGA A SETA ESQUERDA SEMPRE
+00F0   1C0C           00575         BTFSS       PIR1, TMR1IF
+00F1   2937           00576             GOTO        FIM_TRATA_SINALIZACAO
+                      00577             ;GOTO       MAIN
+00F2   3008           00578         MOVLW   B'00001000'
+00F3   0685           00579         XORWF   PORTA, 1
+                      00580         
+                      00581         ; TRATA A SETA DIREITA
+00F4   28F7           00582         GOTO    INICIALIZA_TIMER1
+00F5                  00583 DESLIGA_SETA_DIREITA
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00F5   1185           00584         BCF     PORTA, RA3
+00F6   2937           00585         GOTO    FIM_TRATA_SINALIZACAO
+                      00586         ;GOTO   MAIN
+                      00587 ;------------------------------------
+00F7                  00588 INICIALIZA_TIMER1
+00F7   300B           00589         MOVLW   B'00001011'
+00F8   008F           00590         MOVWF   TMR1H
+00F9   30DB           00591         MOVLW   B'11011011'
+00FA   008E           00592         MOVWF   TMR1L
+00FB   100C           00593         BCF     PIR1, TMR1IF
+                      00594         
+00FC   2937           00595         GOTO    FIM_TRATA_SINALIZACAO
+                      00596         ;GOTO   MAIN
+                      00597         
+00FD                  00598 REQUISICAO_ILUMINACAO
+                      00599         ;MOVF   ESTADO_SINALIZACAO,W
+                      00600         ;MOVWF  DADO
+                      00601         ; ENVIAR ESSE DADO NO BARRAMENTO
+00FD   2140           00602         CALL    VERIFICA_BARRAMENTO ;   LER BARRAMENTO PARA SABER SE ESTÁ OCUPADO OU NÃO
+00FE   2950           00603         GOTO    ENVIA_DADOS
+                      00604         ; TRATA DA REQUISIÇÃO DA ILUMINAÇÃO
+00FF   2935           00605         GOTO    MAIN
+                      00606 ;===============================================================
+0100                  00607 TRATA_DADOS_SENSORES
+                      00608         ; TRATA DADOS DA FAIXA
+0100   2935           00609         GOTO    MAIN
+                      00610         
+                      00611         
+0101                  00612 LE_EEPROM
+                      00613 ;LER DADO DA EEPROM, CUJO ENDEREÇO É INDICADO EM W
+                      00614 ;DADO LIDO RETORNA EM W
+0101   397F           00615         ANDLW   .127            ;LIMITA ENDEREÇO MAX. 127
+0102   1683           00616         BANK1                           ;ACESSO VIA BANK 1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0103   009B           00617         MOVWF   EEADR           ;INDICA O END. DE LEITURA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   141C           00618         BSF             EECON1,RD       ;INICIA O PROCESSO DE LEITURA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0105   081A           00619         MOVF    EEDATA,W        ;COLOCA DADO LIDO EM W
+0106   1283           00620         BANK0                           ;POSICIONA PARA BANK 0
+0107   0008           00621         RETURN
+                      00622 
+                      00623 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00624 ;*                     INICIO DO PROGRAMA                          *
+                      00625 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00626         
+                      00627         
+0108                  00628 INICIO
+0108   1683           00629         BANK1                   ;ALTERA PARA O BANCO 1
+0109   30F1           00630         MOVLW   B'11110001'     ;CONFIGURA TODAS AS PORTAS DO GPIO (PINOS)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+010A   0086           00631         MOVWF   TRISB           ;COMO SAÍDAS
+010B   3020           00632         MOVLW   B'00100000'
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+010C   0085           00633         MOVWF   TRISA           ; INICIALIZA PORTA
+010D   3088           00634         MOVLW   B'10001000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+010E   0081           00635         MOVWF   OPTION_REG      ;DEFINE OPÇÕES DE OPERAÇÃO
+                      00636 ;       MOVLW   B'11011000'
+                      00637 ;       MOVWF   INTCON          ;DEFINE OPÇÕES DE INTERRUPÇÕES
+                      00638         ;CALL   3FFH
+                      00639         ;MOVWF  OSCCAL
+010F   3064           00640         MOVLW   .100
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0110   0092           00641         MOVWF   PR2             ; PERIODO DO PWM
+0111   1283           00642         BANK0                   ;RETORNA PARA O BANCO
+0112   300C           00643         MOVLW   B'00001100'
+0113   0097           00644         MOVWF   CCP1CON
+0114   3005           00645         MOVLW   PWM_FREIO      
+0115   0095           00646         MOVWF   CCPR1L          ; DUTY CICLE
+0116   3004           00647         MOVLW   B'00000100'     ; HABILITA O TIMER2
+0117   0092           00648         MOVWF   T2CON           ; HABILITA O TIMER2
+                      00649 
+                      00650 
+0118   3031           00651         MOVLW   B'00110001'
+0119   0090           00652         MOVWF   T1CON           ; HABILITANDO O TIMER 1 - 1:8   
+011A   3007           00653         MOVLW   B'00000111'
+011B   009F           00654         MOVWF   CMCON           ;DEFINE O MODO DE OPERAÇÃO DO COMPARADOR ANALÓGICO
+                      00655         ;CLRF   GPIO
+                      00656         ;MOVLW  .0
+                      00657         ;MOVWF  TMR0
+                      00658         ;BCF    INTCON, INTF 
+                      00659         
+                      00660         ;BSF    PORTB, RB1
+                      00661         
+011C   3008           00662         MOVLW   .8
+011D   00B6           00663         MOVWF   CONTADOR_BITS
+                      00664 ;       CLRF    CONTA_PROTOCOLOL
+                      00665 ;       CLRF    CONTA_PROTOCOLOH
+011E   3009           00666         MOVLW   .9
+011F   00A5           00667         MOVWF   BITS
+                      00668 ;--------------------------------------
+0120   3000           00669         MOVLW   .0
+0121   2101           00670         CALL    LE_EEPROM
+0122   00C0           00671         MOVWF   BYTE_0
+                      00672 ;--------------------------------------
+0123   3001           00673         MOVLW   .1
+0124   2101           00674         CALL    LE_EEPROM
+0125   00AD           00675         MOVWF   ENDERECO_SENSORES       ;   2   
+                      00676 ;--------------------------------------
+0126   3002           00677         MOVLW   .2
+0127   2101           00678         CALL    LE_EEPROM
+0128   00AC           00679         MOVWF   ENDERECO_SINALIZACAO    ;   5
+                      00680 ;--------------------------------------
+0129   3002           00681         MOVLW   B'00000010'
+                      00682         ;MOVWF  DADOS
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 15
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+012A   01B1           00683         CLRF    BARRAMENTO
+012B   01AE           00684         CLRF    VALORES_SENSORES
+012C   0086           00685         MOVWF   PORTB
+012D   3040           00686         MOVLW   B'01000000'
+012E   00AB           00687         MOVWF   ESTADO_SINALIZACAO
+012F   00A8           00688         MOVWF   DADO_SINALIZACAO
+                      00689         ;CLRF   PORTB 
+0130   0185           00690         CLRF    PORTA
+                      00691         
+                      00692         ;BSF    GPIO, GP5
+                      00693         
+                      00694         ;BCF    GPIO, GP0   ;APENAS PARA SIMULAÇÃO, APAGAR AQUI <----
+0131   30D8           00695         MOVLW   B'11011000'
+0132   008B           00696         MOVWF   INTCON  
+                      00697 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00698 ;*                     INICIALIZAÇÃO DAS VARIÁVEIS                 *
+                      00699 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+0133   222B           00700         CALL    DELAY100MS
+0134   222B           00701         CALL    DELAY100MS
+                      00702 ; * * * * * * * * * * * * * * * *
+                      00703 ;*                     ROTINA PRINCIPAL                            *
+                      00704 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                      00705 
+                      00706 ; RB0 -> LER O BARRAMENTO E ESCREVE
+                      00707 ;
+                      00708 ; RB1 -> FAROL
+                      00709 ; RB2 -> RÉ
+                      00710 ; RB3 -> PWM -> FREIO
+                      00711 ; RB4 -> SE
+                      00712 ; RB5 -> SD
+                      00713 ;
+                      00714 
+0135                  00715 MAIN
+                      00716         ;CLRF   ESTAGIO         ; TEM QUE LIMPAR, SE NÃO FICA ENVIANDO SO 1 BYTE
+                      00717         ;MOVF   DADO, W
+                      00718         ;BCF    PORTA, RA6
+0135   01B7           00719         CLRF    ESTAGIO
+                      00720         ;MOVWF  PORTB
+                      00721 ;       BTFSC   BARRAMENTO, 7   ; HÁ ALGUM DADO PARA SER ENVIADO NO BARRAMENTO REFERENTE AOS SENSORES?
+                      00722 ;           GOTO    ENVIAR_SENSORES ; SIM
+                      00723             
+                      00724         
+                      00725 
+0136   28B5           00726         GOTO    TRATA_DADOS_SINALIZACAO
+0137                  00727 FIM_TRATA_SINALIZACAO
+0137   1BB1           00728         BTFSC   BARRAMENTO, 7   ; HÁ ALGUM DADO PARA SER ENVIADO NO BARRAMENTO REFERENTE AOS SENSORES?
+0138   293B           00729             GOTO    ENVIAR_SENSORES ; SIM
+0139   2935           00730             GOTO        MAIN
+013A   222B           00731         CALL    DELAY100MS
+013B                  00732 ENVIAR_SENSORES
+013B   2140           00733         CALL    VERIFICA_BARRAMENTO ;   LER BARRAMENTO PARA SABER SE ESTÁ OCUPADO OU NÃO
+013C   2950           00734         GOTO    ENVIA_DADOS
+013D                  00735 FIM_ENVIA_DADOS
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 16
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00736 ;BANK1
+                      00737 ;BSF    TRISB, 0    ; SETA O RB0 COMO ENTRADA
+                      00738 ;BANK0
+013D   30D8           00739         MOVLW   B'11011000'     ; HABILITA A INTERRUPÇÃO APOS ENVIAR OS DADOS
+013E   008B           00740         MOVWF   INTCON
+                      00741         ;MOVLW  B'11010000'     ; HABILITA A INTERRUPÇÃO APOS ENVIAR OS DADOS
+                      00742         ;BCF    INTCON, INTF    ; LIMPA A FLAG DE INTERRUPÇÃO NO GP2, POIS QUANOD HABILITAR ELA NOVAMENT
+                            E, VAI DIRETO PRA INTERRUPÇÃO
+                      00743         ;BSF    INTCON, GIE
+                      00744         ;BSF    INTCON, PEIE
+                      00745         ;BSF    INTCON, INTE
+                      00746         ;DEFINE OPÇÕES DE INTERRUPÇÕES
+                      00747         ; TO DO
+013F   2935           00748         GOTO    MAIN
+                      00749         
+                      00750         
+                      00751 ;=============================================================
+0140                  00752 VERIFICA_BARRAMENTO             ; VERIFICO SE O BARRAMENTO ESTÁ LIVRE POR 200 US
+0140   1785           00753         BSF     PORTA, RA7
+0141   178B           00754         BSF     INTCON, GIE
+0142   12B1           00755         BCF     BARRAMENTO, 5   ; LIMPA O SINALIZADOR DE LEITURA DO BARRAMENTO
+                      00756         ; TESTA SE O VALOR LIDO É REFERENTE AO STOP DA COLISAO
+                      00757         ;   SE FOR, TRATAR ESSE DADO
+0143   110B           00758         BCF     INTCON, T0IF
+0144   3028           00759         MOVLW   .40;.20
+0145   0081           00760         MOVWF   TMR0
+0146   1C06           00761         BTFSS   PORTB, RB0              ; VERIFICA SE O BARRAMENTO ESTÁ EM LOW
+0147   2940           00762          GOTO   VERIFICA_BARRAMENTO
+                      00763         
+0148                  00764 VERIFICA_BARRAMENTO_0
+0148   1C06           00765         BTFSS   PORTB, RB0              ; VERIFICA SE O BARRAMENTO ESTÁ EM LOW
+0149   2940           00766          GOTO   VERIFICA_BARRAMENTO
+014A   1D0B           00767         BTFSS   INTCON, T0IF
+014B   2948           00768         GOTO    VERIFICA_BARRAMENTO_0
+                      00769         ;BSF    BARRAMENTO, 0      ; SINALIZO BARRAMENTO LIVRE. (É NECESSÁRIO?)
+014C   1AB1           00770         BTFSC   BARRAMENTO, 5   ; HOUVE UMA LEITURA NO BARRAMENTO?
+014D   2940           00771          GOTO   VERIFICA_BARRAMENTO
+014E   1385           00772         BCF     PORTA, RA7
+014F   0008           00773         RETURN
+                      00774 ;=============================================================
+0150                  00775 ENVIA_DADOS
+                      00776 
+                      00777 ;               BTFSC   PORTA, RA7
+                      00778 ;                   GOTO    FIM_ENVIA_DADOS
+0150   138B           00779               BCF       INTCON, GIE             ; DESABILITA AS INTERRUPÇÕES
+0151   130B           00780               BCF       INTCON, PEIE
+0152   120B           00781               BCF       INTCON, INTE
+0153   118B           00782               BCF       INTCON, RBIE
+                      00783         ;===========
+                      00784         ;BANK1
+                      00785         ;BCF    TRISB, 0    ; SETA O RB0 COMO SAIDA
+                      00786         ;BANK0
+                      00787               
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 17
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00788 
+                      00789         
+                      00790         ;CLRF   INTCON              ;   DESABILITA A INTERRUPÇÃO
+                      00791         ;MOVLW  0X00
+0154   3003           00792         MOVLW   0X03
+0155   00C0           00793         MOVWF   BYTE_0
+                      00794         
+0156   1BB1           00795         BTFSC   BARRAMENTO,7        ; VERIFICO SE O ENVIO É DOS SENSORES
+0157   295D           00796             GOTO    PREPARA_SENSORES
+                      00797         
+0158   082C           00798         MOVF    ENDERECO_SINALIZACAO, W  ;      MOVO O ENDEREÇO DO SUBSISTEMA QUE ENVIARÁ DOS DADOS
+0159   00C1           00799         MOVWF   ENDERECO            ;   PARA O ENDEREÇO QUE SERÁ LIDO
+015A   082B           00800         MOVF    ESTADO_SINALIZACAO, W
+015B   00C2           00801         MOVWF   DADO
+015C   2963           00802         GOTO    ENVIAR_OK
+                      00803 
+                      00804         
+015D                  00805 PREPARA_SENSORES
+015D   082E           00806         MOVF    VALORES_SENSORES, W
+015E   00C2           00807         MOVWF   DADO
+Message[305]: Using default destination of 1 (file).
+015F   0EC2           00808         SWAPF   DADO                ; SWAP PARA INVERTER A POSIÇÃO E FICAR COM O FORMATO DE ENVIO DO DAD
+                            O REFERENTE A DETECÇÃO DE FAIXA
+0160   1642           00809         BSF     DADO,4
+0161   082D           00810         MOVF    ENDERECO_SENSORES,W
+0162   00C1           00811         MOVWF   ENDERECO
+                      00812         
+0163                  00813 ENVIAR_OK
+                      00814               
+0163   303F           00815             MOVLW       0x3F                    ; ENDEREÇO APONTADO PARA O ENREREÇO RESERVADO PARA LEITU
+                            RA DOS DADOS 
+                      00816                                                 ; PARA SER INCREMENTADO POR IGUAL NO ENVIO DOS BYTES
+0164   0084           00817             MOVWF       FSR                     ; PONTEIRO
+0165   3003           00818             MOVLW       .3
+0166   00B5           00819             MOVWF       CONTADOR_BYTES
+                      00820             
+0167   1C06           00821             BTFSS       PORTB, RB0              ; TESTE
+0168   2935           00822                GOTO     MAIN
+                      00823             
+0169   2219           00824             CALL        START_SYNC_SLAVE        ; PASSA 250 US EM BAIXA, NÃO NECESSITA VERIFICAR COLISÃO
+016A   2990           00825             GOTO        START_BIT_ENVIA
+016B                  00826 FIM_START_BIT
+Message[305]: Using default destination of 1 (file).
+016B   0A84           00827                 INCF    FSR                 ; VALOR INCREMENTADO DO PONTEIRO, PARA QUE EM TODOS OS TEMPO
+                            S SEJAM IGUAIS
+                      00828         ;BSF    CONTADOR_BITS, 3        ; COLOCO O VALOR 8 NO CONTADOR DE BITS QUE ANTES ESTAVA ZERADO
+016C   3008           00829         MOVLW   .8
+016D   00B6           00830         MOVWF   CONTADOR_BITS
+016E   14B7           00831                 BSF     ESTAGIO, 1          ; SINALIZA QUE É O ENVIO DO BYTE 0
+016F   29BC           00832                 GOTO    ENVIA_BYTE          ; O VALOR QUE ESTIVER NO WORK, SERÁ ENVIADO
+0170                  00833 FIM_BYTE_0
+0170   0000           00834                 NOP
+0171   0000           00835                 NOP
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 18
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00836                 ;NOP
+Message[305]: Using default destination of 1 (file).
+0172   0D80           00837                 RLF     INDF                ; ULTIMO ROTATE PARA QUE PEGAR O VALOR QUE ESTAVA NO CARRY E
+                             DEIXAR ORIGINAL
+Message[305]: Using default destination of 1 (file).
+0173   03B5           00838                 DECF    CONTADOR_BYTES      ; DECREMENTA O CONTADOR DE BYTES TODA VEZ QUE É ENVIADO UM B
+                            YTE
+Message[305]: Using default destination of 1 (file).
+0174   0A84           00839                 INCF    FSR                 ; VALOR INCREMENTADO DO PONTEIRO, PARA QUE EM TODOS OS TEMPO
+                            S SEJAM IGUAIS
+                      00840         ;BSF    CONTADOR_BITS, 3        ; COLOCO O VALOR 8 NO CONTADOR DE BITS QUE ANTES ESTAVA ZERADO
+0175   3008           00841         MOVLW   .8
+0176   00B6           00842         MOVWF   CONTADOR_BITS
+0177   1537           00843                 BSF     ESTAGIO, 2          ; SINALIZA QUE É O ENVIO DO ENDEREÇO
+0178   29BC           00844                 GOTO    ENVIA_BYTE          ; O VALOR QUE ESTIVER NO WORK, SERÁ ENVIADO
+0179                  00845 FIM_ENDERECO
+0179   0000           00846                 NOP
+017A   0000           00847                 NOP
+                      00848                 ;NOP
+Message[305]: Using default destination of 1 (file).
+017B   0D80           00849                 RLF     INDF                ; ULTIMO ROTATE PARA QUE PEGAR O VALOR QUE ESTAVA NO CARRY E
+                             DEIXAR ORIGINAL
+Message[305]: Using default destination of 1 (file).
+017C   03B5           00850                 DECF    CONTADOR_BYTES      ; DECREMENTA O CONTADOR DE BYTES TODA VEZ QUE É ENVIADO UM B
+                            YTE
+Message[305]: Using default destination of 1 (file).
+017D   0A84           00851                 INCF    FSR                 ; VALOR INCREMENTADO DO PONTEIRO, PARA QUE EM TODOS OS TEMPO
+                            S SEJAM IGUAIS
+                      00852                         ;BSF    CONTADOR_BITS, 3        ; COLOCO O VALOR 8 NO CONTADOR DE BITS QUE ANTES
+                             ESTAVA ZERADO
+017E   3008           00853         MOVLW   .8
+017F   00B6           00854         MOVWF   CONTADOR_BITS
+0180   15B7           00855                 BSF     ESTAGIO, 3          ; SINALIZA QUE É O ENVIO DO DADO
+0181   29BC           00856                 GOTO    ENVIA_BYTE          ; O VALOR QUE ESTIVER NO WORK, SERÁ ENVIADO
+0182                  00857 FIM_DADO
+Message[305]: Using default destination of 1 (file).
+0182   0D80           00858                 RLF     INDF                ; ULTIMO ROTATE PARA QUE PEGAR O VALOR QUE ESTAVA NO CARRY E
+                             DEIXAR ORIGINAL
+Message[305]: Using default destination of 1 (file).
+0183   03B5           00859                 DECF    CONTADOR_BYTES      ; DECREMENTA O CONTADOR DE BYTES TODA VEZ QUE É ENVIADO UM B
+                            YTE
+0184   2220           00860                 CALL    DELAY_US
+0185   1486           00861                 BSF     PORTB, RB1          ; COLOCA O BARRAMENTO EM ALTA
+                      00862                 
+0186   1BB1           00863                 BTFSC   BARRAMENTO, 7       ; OS DADOS ENVIADOS ERAM DOS SENSORES?
+0187   298E           00864                     GOTO    ENVIOU_SENSORES ; TRATA
+0188   1AA8           00865                 BTFSC   REQUISICAO
+0189   298B           00866                     GOTO    REQUISICAO_ENVIADA
+018A   293D           00867                 GOTO    FIM_ENVIA_DADOS
+018B                  00868 REQUISICAO_ENVIADA
+                      00869                 ;BCF    REQUISICAO          ; QUANDO HOUVER UMA REQUISIÇÃO, ENVIA UMA UNICA VEZ O DADO
+018B   082B           00870                 MOVF    ESTADO_SINALIZACAO, W
+018C   00A8           00871                 MOVWF   DADO_SINALIZACAO
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 19
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+018D   293D           00872                 GOTO    FIM_ENVIA_DADOS
+018E                  00873 ENVIOU_SENSORES
+018E   13B1           00874                 BCF     BARRAMENTO, 7
+018F   293D           00875                 GOTO    FIM_ENVIA_DADOS     ; CASO TAMBÉM TENHA TIDO UMA REQUISIÇÃO, O BIT DE REQUISIÇÃO
+                             NÃO FOI LIMPO
+                      00876                                             ; LOGO, O DADO SERÁ REENVIADO.
+                      00877         
+0190                  00878 START_BIT_ENVIA
+                      00879         ;DELAY DE 50 US EM ALTA
+0190   1486           00880         BSF     PORTB, RB1
+0191   2220           00881         CALL    DELAY_US
+0192   2220           00882         CALL    DELAY_US
+0193   2220           00883         CALL    DELAY_US
+                      00884         ;NOP
+0194   0000           00885         NOP
+0195   0000           00886         NOP
+0196   0000           00887         NOP
+0197   0000           00888         NOP
+                      00889         ;NOP
+                      00890         ;NOP
+0198   0000           00891         NOP
+                      00892         ;BANK1
+                      00893         ;BSF    TRISB, 0
+                      00894         ;BANK0
+0199   1C06           00895         BTFSS   PORTB, RB0;GP2
+019A   2A08           00896             GOTO    COLISAO_START_BIT   ; SE HOUVER COLISÃO, TRATAR OS DADOS REFENTE A ELA
+                      00897         ;BANK1
+                      00898         ;BCF    TRISB, 0 ; SAIDA, BARRAMENTO EM LOW
+                      00899         ;BANK0
+                      00900         ;BSF    PORTB, RB0
+019B   2220           00901         CALL    DELAY_US
+019C   2220           00902         CALL    DELAY_US
+019D   2220           00903         CALL    DELAY_US
+019E   2220           00904         CALL    DELAY_US
+019F   2220           00905         CALL    DELAY_US
+01A0   2220           00906         CALL    DELAY_US
+01A1   0000           00907         NOP
+01A2   0000           00908         NOP
+01A3   0000           00909         NOP
+01A4   0000           00910         NOP
+01A5   0000           00911         NOP
+01A6   0000           00912         NOP
+                      00913         ;NOP
+01A7   0000           00914         NOP
+01A8   0000           00915         NOP
+                      00916         
+                      00917         ; DELAY DE 150 US EM BAIXA, NÃO NECESSITA VERIFICAR COLISÃO
+                      00918 ;BANK1
+                      00919 ;BCF    TRISB, 0    ; SAIDA, BARRAMENTO EM LOW
+                      00920 ;BANK0
+01A9   1086           00921         BCF     PORTB, RB1
+01AA   2220           00922         CALL    DELAY_US
+01AB   2220           00923         CALL    DELAY_US
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 20
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01AC   2220           00924         CALL    DELAY_US
+01AD   2220           00925         CALL    DELAY_US
+01AE   2220           00926         CALL    DELAY_US
+01AF   2220           00927         CALL    DELAY_US
+01B0   2220           00928         CALL    DELAY_US
+01B1   2220           00929         CALL    DELAY_US
+01B2   2220           00930         CALL    DELAY_US
+01B3   0000           00931         NOP
+01B4   0000           00932         NOP
+01B5   0000           00933         NOP
+01B6   0000           00934         NOP
+01B7   0000           00935         NOP
+                      00936         ;NOP
+                      00937         ;NOP
+                      00938         ;NOP
+                      00939         ;NOP
+                      00940         ;NOP
+01B8   0000           00941         NOP
+01B9   0000           00942         NOP
+01BA   0000           00943         NOP
+                      00944         
+01BB   296B           00945         GOTO    FIM_START_BIT
+                      00946         
+                      00947 
+01BC                  00948 ENVIA_BYTE 
+01BC   1F80           00949     BTFSS   INDF, 7
+01BD   29BF           00950         GOTO    ENVIA_0
+01BE   29D6           00951         GOTO    ENVIA_1
+                      00952 
+01BF                  00953 ENVIA_0
+                      00954 ;       BANK1
+                      00955 ;       BSF     TRISB, 0    ; ENTRADA, BARRAMENTO EM ALTA
+                      00956 ;       BANK0
+01BF   1486           00957         BSF     PORTB, RB1
+                      00958         ;CALL   DELAY_US
+01C0   0000           00959         NOP
+01C1   0000           00960         NOP
+01C2   0000           00961         NOP
+01C3   0000           00962         NOP
+01C4   0000           00963         NOP
+01C5   0000           00964         NOP
+01C6   0000           00965         NOP
+01C7   0000           00966         NOP
+01C8   0000           00967         NOP
+01C9   0000           00968         NOP
+01CA   0000           00969         NOP
+01CB   0000           00970         NOP
+01CC   0000           00971         NOP
+                      00972         ;NOP
+Message[305]: Using default destination of 1 (file).
+01CD   0D80           00973         RLF     INDF        
+                      00974         
+Message[305]: Using default destination of 1 (file).
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 21
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01CE   0BB6           00975         DECFSZ  CONTADOR_BITS
+01CF   29F9           00976             GOTO    TEMPO_EM_BAIXA      ; VAI PASSAR 20 US EM BAIXA
+01D0   1086           00977             BCF     PORTB, RB1          ; FICA EM BAIXA O BARRAMENTO
+                      00978 ;       BANK1
+                      00979 ;       BCF     TRISB, 0    ; SAIDA, BARRAMENTO EM BAIXA
+                      00980 ;       BANK0
+01D1   19B7           00981             BTFSC   ESTAGIO, 3          ; VERIFICA SE TERMINOU DE ENVIAR O DADO
+01D2   2982           00982                 GOTO    FIM_DADO
+01D3   1937           00983             BTFSC   ESTAGIO, 2          ; VERIFICA SE TERMINOU DE ENVIAR O ENDERECO
+01D4   2979           00984                 GOTO    FIM_ENDERECO
+01D5   2970           00985                 GOTO    FIM_BYTE_0      ; CASO NÃO ESTEJA NENHUM, O BYTE ENVIADO É BYTE_0
+                      00986 
+01D6                  00987 ENVIA_1
+                      00988 ;       BANK1
+                      00989 ;       BSF     TRISB, 0    ;ENTRADA, BARRAMENTO EM ALTA
+                      00990 ;       BANK0
+01D6   1486           00991         BSF     PORTB, RB1
+Message[305]: Using default destination of 1 (file).
+01D7   0D80           00992         RLF     INDF    
+                      00993         ; PASSA 30 US EM ALTA
+                      00994         
+01D8   1C06           00995         BTFSS   PORTB, RB0;GP2          ; TESTA SE O BARRAMENTO NÃO ESTÁ COM COLISÃO
+01D9   293D           00996             GOTO    FIM_ENVIA_DADOS     ; TRATAR COLISAO BITS
+                      00997         ;BANK1
+                      00998         ;BSF    TRISB, 0
+                      00999         ;BANK0
+01DA   0000           01000         NOP
+01DB   0000           01001         NOP
+01DC   0000           01002         NOP
+01DD   0000           01003         NOP
+01DE   1C06           01004         BTFSS   PORTB, RB0;GP2
+01DF   293D           01005             GOTO    FIM_ENVIA_DADOS     ; SE HOUVER COLISÃO NESSE PONTO, É ERRO, NÃO DEVERIA TER, TRATAR
+                             OS DADOS REFENTE A ELA
+01E0   2220           01006         CALL    DELAY_US
+                      01007         ;BANK1
+                      01008         ;BCF    TRISIO, 2
+                      01009         ;BANK0
+                      01010         ;BSF    GPIO, GP2
+                      01011         ;BANK1
+                      01012         ;BSF    TRISIO, 2
+                      01013         ;BANK0
+01E1   0000           01014         NOP
+01E2   0000           01015         NOP
+01E3   0000           01016         NOP
+01E4   0000           01017         NOP
+01E5   0000           01018         NOP
+01E6   0000           01019         NOP
+01E7   0000           01020         NOP
+01E8   0000           01021         NOP
+                      01022         ;NOP
+                      01023         ;NOP
+                      01024         ;NOP
+                      01025         ;NOP
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 22
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      01026         ;RLF    INDF                    ; ROTACIONA O DADO;     BTFSS   GPIO, GP2               ; TESTA 
+                            SE O BARRAMENTO NÃO ESTÁ COM COLISÃO
+                      01027 ;           GOTO    COLISAO_ENVIAR_BITS ; TRATAR COLISAO BITS
+                      01028         ; PASSA MAIS 10 US EM ALTA APOS CHECAR
+                      01029 
+01E9   1C06           01030         BTFSS   PORTB, RB0;GP2
+01EA   2A0F           01031             GOTO    COLISAO_ENVIAR_BITS ; SE HOUVER COLISÃO, TRATAR OS DADOS REFENTE A ELA
+                      01032         ;BANK1
+                      01033         ;BCF    TRISB, 0
+                      01034         ;BANK0
+                      01035         ;BSF    PORTB, RB0
+01EB   0000           01036         NOP
+01EC   0000           01037         NOP
+01ED   0000           01038         NOP
+01EE   0000           01039         NOP
+                      01040         ;NOP
+01EF   0000           01041         NOP
+01F0   0000           01042         NOP
+Message[305]: Using default destination of 1 (file).
+01F1   0BB6           01043         DECFSZ  CONTADOR_BITS
+01F2   29F9           01044             GOTO    TEMPO_EM_BAIXA      ; VAI PASSAR 20 US EM BAIXA
+01F3   1086           01045             BCF     PORTB, RB1          ; FICA EM BAIXA O BARRAMENTO
+                      01046 ;       BANK1
+                      01047 ;       BCF     TRISB, 0    ; SAIDA, BARRAMENTO EM BAIXA
+                      01048 ;       BANK0
+01F4   19B7           01049             BTFSC   ESTAGIO, 3          ; VERIFICA SE TERMINOU DE ENVIAR O DADO
+01F5   2982           01050                 GOTO    FIM_DADO
+01F6   1937           01051             BTFSC   ESTAGIO, 2          ; VERIFICA SE TERMINOU DE ENVIAR O ENDERECO
+01F7   2979           01052                 GOTO    FIM_ENDERECO
+01F8   2970           01053                 GOTO    FIM_BYTE_0      ; CASO NÃO ESTEJA NENHUM, O BYTE ENVIADO É BYTE_0
+                      01054 ;==============================
+01F9                  01055 TEMPO_EM_BAIXA
+                      01056 ;       BANK1
+                      01057 ;       BCF     TRISB, 0    ; SAIDA, BARRAMENTO EM BAIXA
+                      01058 ;       BANK0
+01F9   1086           01059         BCF     PORTB, RB1
+                      01060         ; PASSA 20 US EM BAIXA
+                      01061         ;CALL   DELAY_US
+01FA   0000           01062         NOP
+01FB   0000           01063         NOP
+01FC   0000           01064         NOP
+01FD   0000           01065         NOP
+01FE   0000           01066         NOP
+01FF   0000           01067         NOP
+0200   0000           01068         NOP
+0201   0000           01069         NOP
+0202   0000           01070         NOP
+0203   0000           01071         NOP
+0204   0000           01072         NOP
+0205   0000           01073         NOP
+0206   0000           01074         NOP
+0207   29BC           01075         GOTO    ENVIA_BYTE
+                      01076 ;===============================
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 23
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0208                  01077 COLISAO_START_BIT
+                      01078         
+0208   15B1           01079         BSF     FLAG_COL_START_BIT              ; SINALIZO QUE HOUVE UMA COLISÃO NO START BIT
+0209   14B1           01080         BSF     FLAG_COLISAO            ; SINALIZO QUE HOUVE UMA COLISÃO
+020A   1086           01081         BCF     PORTB, RB1
+020B   30D8           01082         MOVLW   B'11011000'
+020C   008B           01083         MOVWF   INTCON                                  ;   ATIVAR AS INTERRUPÇÕES
+020D   148B           01084         BSF     INTCON, INTF                            ; SINALIZO A INTERRUPÇÃO PARA QUE SEJA TRATADA I
+                            MEDIATAMENTE
+020E   2935           01085         GOTO    MAIN
+                      01086         
+020F                  01087 COLISAO_ENVIAR_BITS                                                             
+020F   1380           01088         BCF     INDF,   7                               ; SETO O BIT DO REGISTRADOR APONTADO PARA 0, POI
+                            S HOUVE COLISAO 
+                      01089         ;BCF    PORTB, RB1
+0210   0BB6           01090         DECFSZ  CONTADOR_BITS, F                        ; TEM QUE DECREMENTAR O CONTADOR DE BITS, POIS E
+                            LE FOI LIDO JÁ E SERA LIDO OUTRA VEZ CASO NÃO DECREMENTE
+0211   2A13           01091             GOTO        $+2
+0212   2935           01092             GOTO        MAIN
+0213   1631           01093         BSF     FLAG_COL_ENVIAR_BIT                     ; SINALIZO QUE HOUVE UMA COLISÃO NO START BIT NO
+                             REGISTRADOR BARRAMENTO
+0214   14B1           01094         BSF     FLAG_COLISAO                            ; SINALIZO QUE HOUVE UMA COLISÃO
+0215   30D8           01095         MOVLW   B'11011000'
+0216   008B           01096         MOVWF   INTCON                                  ;   ATIVAR AS INTERRUPÇÕES
+0217   148B           01097         BSF     INTCON, INTF                            ; SINALIZO A INTERRUPÇÃO PARA QUE SEJA TRATADA I
+                            MEDIATAMENTE
+0218   2935           01098         GOTO    MAIN
+                      01099 ;====================================
+0219                  01100 START_SYNC_SLAVE
+                      01101 ;       BANK1
+                      01102 ;       BCF     TRISB, 0    ; SAIDA
+                      01103 ;       BANK0
+0219   1086           01104         BCF     PORTB, RB1
+                      01105         ; PASSA 250 US EM BAIXA
+                      01106                         ;244 cycles
+021A   3052           01107         MOVLW   .82
+021B   00A7           01108         MOVWF   DELAY_SYNC
+021C                  01109 START_SYNC_SLAVE_0
+021C   0BA7           01110         DECFSZ  DELAY_SYNC, F
+021D   2A1C           01111         GOTO    START_SYNC_SLAVE_0
+                      01112         
+                      01113         ;GOTO   $+1
+021E   1486           01114         BSF     PORTB, RB1
+                      01115 ;       BANK1
+                      01116 ;       BSF     TRISB, 0 ; ENTRADA, BARRAMENTO VAI PRA 1
+                      01117 ;       BANK0
+021F   0008           01118         RETURN
+                      01119 
+0220                  01120 DELAY_US
+0220   0000           01121     NOP
+0221   0000           01122     NOP
+0222   0000           01123     NOP
+0223   0000           01124     NOP
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 24
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0224   0000           01125     NOP
+0225   0000           01126     NOP
+0226   0000           01127     NOP
+0227   0000           01128     NOP
+0228   0000           01129     NOP
+0229   0000           01130     NOP
+                      01131     
+022A   0008           01132     RETURN
+022B                  01133 DELAY100MS
+                      01134                         ;99993 cycles
+022B   301E           01135         MOVLW   .30
+022C   00B0           01136         movwf   CONT_1
+022D   304F           01137         MOVLW   .79
+022E   00AF           01138         movwf   CONT_2
+022F                  01139 DELAY100MS_0
+Message[305]: Using default destination of 1 (file).
+022F   0BB0           01140         DECFSZ  CONT_1
+0230   2A32           01141         GOTO    $+2
+Message[305]: Using default destination of 1 (file).
+0231   0BAF           01142         DECFSZ  CONT_2
+0232   2A2F           01143         GOTO    DELAY100MS_0
+                      01144                         ;3 cycles
+0233   2A34           01145         GOTO    $+1
+0234   0000           01146         NOP
+                      01147                         ;4 cycles (including call)
+0235   0008           01148         RETURN
+                      01149     END
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADDEN                             00000003
+ADEN                              00000003
+ALERTA_ON                         00000039
+BANK0                             BCF STATUS,RP0
+BANK1                             BSF STATUS,RP0
+BARRAMENTO                        00000031
+BITS                              00000025
+BIT_0                             0000005E
+BIT_1                             0000006B
+BRGH                              00000002
+BYTE                              00000024
+BYTE_0                            00000040
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CIS                               00000003
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             0000001F
+CMIE                              00000006
+CMIF                              00000006
+COLISAO                           0000008B
+COLISAO_ENVIAR_BITS               0000020F
+COLISAO_START_BIT                 00000208
+CONCLUIDA_LEITURA                 00000078
+CONTADOR_BITS                     00000036
+CONTADOR_BYTES                    00000035
+CONTADOR_START_BIT                00000034
+CONTADOR_START_SYNC               00000032
+CONT_1                            00000030
+CONT_2                            0000002F
+CONT_START_SYNC_MASTER            00000026
+COUNT_SYNC                        00000022
+CREN                              00000004
+CSRC                              00000007
+DADO                              00000042
+DADO_SENSORES                     00000029
+DADO_SINALIZACAO                  00000028
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+DATA_CP_OFF                       00003FFF
+DATA_CP_ON                        00003EFF
+DC                                00000001
+DELAY100MS                        0000022B
+DELAY100MS_0                      0000022F
+DELAY_                            00000023
+DELAY_SYNC                        00000027
+DELAY_US                          00000220
+DESLIGAR_FAROL                    000000D2
+DESLIGAR_RE                       000000D6
+DESLIGA_ALERTA                    000000E3
+DESLIGA_SETA_DIREITA              000000F5
+DESLIGA_SETA_ESQUERDA             000000ED
+EEADR                             0000009B
+EECON1                            0000009C
+EECON2                            0000009D
+EEDATA                            0000009A
+EEIE                              00000007
+EEIF                              00000007
+ENDERECO                          00000041
+ENDERECO_ENVIAR                   00000038
+ENDERECO_SENSORES                 0000002D
+ENDERECO_SINALIZACAO              0000002C
+ENVIAR_OK                         00000163
+ENVIAR_SENSORES                   0000013B
+ENVIA_0                           000001BF
+ENVIA_1                           000001D6
+ENVIA_BYTE                        000001BC
+ENVIA_DADOS                       00000150
+ENVIOU_SENSORES                   0000018E
+ESPERA_BIT_0_MUDAR                00000068
+ESPERA_BIT_1_MUDAR                00000075
+ESPERA_SUBIDA_ST                  0000004B
+ESPERA_SUBIDA_START_BIT           00000048
+ESTADO_SINALIZACAO                0000002B
+ESTAGIO                           00000037
+F                                 00000001
+FAROL                             ESTADO_SINALIZACAO, 0
+FERR                              00000002
+FIM_ALERTA                        000000C4
+FIM_BYTE_0                        00000170
+FIM_DADO                          00000182
+FIM_ENDERECO                      00000179
+FIM_ENVIA_DADOS                   0000013D
+FIM_FAROL                         000000BA
+FIM_FREIO                         000000C0
+FIM_RE                            000000BD
+FIM_SETA_ESQUERDA                 000000C7
+FIM_SINCRONIZA_LEDS               000000DA
+FIM_START_BIT                     0000016B
+FIM_TRATA_SINALIZACAO             00000137
+FLAG_BYTE_0                       ESTAGIO, 1
+FLAG_COLISAO                      BARRAMENTO, 1
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 27
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+FLAG_COL_ENVIAR_BIT               BARRAMENTO, 4
+FLAG_COL_START_BIT                BARRAMENTO, 3
+FLAG_DADO                         ESTAGIO, 3
+FLAG_ENDERECO                     ESTAGIO, 2
+FREIO                             ESTADO_SINALIZACAO, 2
+FREIO_ACIONADO                    000000CA
+FREIO_DESACIONADO                 000000CD
+FSR                               00000004
+GIE                               00000007
+INCREMENTA_LIMPA                  0000001D
+INCREMENTA_START_BIT              00000039
+INDF                              00000000
+INICIALIZA_TIMER1                 000000F7
+INICIO                            00000108
+INICIO_START_SYNC                 00000014
+INIC_CONT_START_SYNC              00000010
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+LER_BITS                          00000050
+LER_BITS_CONTINUA                 00000055
+LE_EEPROM                         00000101
+LIGAR_FAROL                       000000D0
+LIGAR_RE                          000000D4
+LIGA_ALERTA                       000000D8
+LIGA_SETA_DIREITA                 000000EF
+LIGA_SETA_ESQUERDA                000000E7
+MAIN                              00000135
+MONITORA_BITS                     0000002A
+NOT_BO                            00000000
+NOT_BOD                           00000000
+NOT_BOR                           00000000
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+OERR                              00000001
+OPTION_REG                        00000081
+OSCF                              00000003
+PASSA_DADO_SENSORES               000000A5
+PASSA_DADO_SINALIZACAO            00000097
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PIE1                              0000008C
+PIR1                              0000000C
+PORTA                             00000005
+PORTB                             00000006
+PR2                               00000092
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 28
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PREPARA_SENSORES                  0000015D
+PROPRIETARIO                      00000033
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PWM_FREIO                         .5
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RE                                ESTADO_SINALIZACAO, 1
+REQUISICAO                        DADO_SINALIZACAO, 5
+REQUISICAO_ENVIADA                0000018B
+REQUISICAO_ILUMINACAO             000000FD
+RP0                               00000005
+RP1                               00000006
+RX9                               00000006
+RX9D                              00000000
+SAI_INT                           000000A8
+SENSOR_1                          PORTB, RB4
+SENSOR_2                          PORTB, RB5
+SENSOR_3                          PORTB, RB6
+SENSOR_4                          PORTB, RB7
+SETA_DIREITA                      ESTADO_SINALIZACAO, 4
+SETA_ESQUERDA                     ESTADO_SINALIZACAO, 3
+SINCRONIZA_LEDS                   000000DF
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+START_BIT                         00000034
+START_BIT_CONFIGURA               00000031
+START_BIT_ENVIA                   00000190
+START_BIT_INICIO                  0000002F
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 29
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+START_BIT_LOW                     00000043
+START_BIT_LOW_INICIO              00000040
+START_SYNC                        00000018
+START_SYNC_SLAVE                  00000219
+START_SYNC_SLAVE_0                0000021C
+STATUS                            00000003
+STATUS_TEMP                       00000021
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1OSCEN                           00000003
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TEMPO_EM_BAIXA                    000001F9
+TESTA_SENSORES                    00000085
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRATAR_COLISAO                    0000000D
+TRATA_DADOS_SENSORES              00000100
+TRATA_DADOS_SINALIZACAO           000000B5
+TRATA_SENSORES                    0000007F
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000086
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 30
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRMT                              00000001
+TX9                               00000006
+TX9D                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+VALORES_SENSORES                  0000002E
+VERIFICA_1_0                      0000005B
+VERIFICA_BARRAMENTO               00000140
+VERIFICA_BARRAMENTO_0             00000148
+VERIFICA_MASTER                   0000002A
+VERIFICA_SLAVER                   00000022
+VERIFICA_START_BIT                0000003D
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             0000009F
+VREN                              00000007
+VROE                              00000006
+VRR                               00000005
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+W_TEMP                            00000020
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_OFF                           00003FFF
+_CP_ON                            00001FFF
+_DEVID1                           00002006
+_ER_OSC_CLKOUT                    00003FFF
+_ER_OSC_NOCLKOUT                  00003FFE
+_EXTCLK_OSC                       00003FEF
+_FOSC_ECIO                        00003FEF
+_FOSC_EXTRCCLK                    00003FFF
+_FOSC_EXTRCIO                     00003FFE
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 31
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_FOSC_HS                          00003FEE
+_FOSC_INTOSCCLK                   00003FFD
+_FOSC_INTOSCIO                    00003FFC
+_FOSC_LP                          00003FEC
+_FOSC_XT                          00003FED
+_HS_OSC                           00003FEE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_INTOSC_OSC_CLKOUT                00003FFD
+_INTOSC_OSC_NOCLKOUT              00003FFC
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FEC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC_CLKOUT                    00003FFF
+_RC_OSC_NOCLKOUT                  00003FFE
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FED
+__16F628A                         00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X---XXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0180 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+01C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0200 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXX----------
+2000 : -------X-------- ---------------- ---------------- ----------------
+2100 : XXXX------------ ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   563
+Program Memory Words Free:  1485
+
+
+MPASM 5.77               SINALIZACAO_OWP.ASM   10-4-2018  13:58:54         PAGE 32
+
+
+
+
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :    38 reported,     0 suppressed
+
+

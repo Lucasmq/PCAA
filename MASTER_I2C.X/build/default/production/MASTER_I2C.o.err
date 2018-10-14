@@ -1,0 +1,52 @@
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 249 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 280 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 281 : Using default destination of 1 (file).
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 297 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 321 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 327 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 391 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 411 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 420 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 428 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 460 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 464 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 506 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 526 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 530 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 532 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 538 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 549 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 554 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 556 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 563 : Using default destination of 1 (file).
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 693 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 694 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 695 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 709 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 717 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 718 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 720 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 723 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 724 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 732 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 734 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 736 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 742 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 760 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1001 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1028 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1037 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1038 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1039 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1048 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1049 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1050 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1059 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1060 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1114 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1116 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1130 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1148 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1252 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1254 : Using default destination of 1 (file).
+Message[305] C:\USERS\LUCAS QUEIROZ\MPLABXPROJECTS\MASTER_I2C.X\MASTER_I2C.ASM 1432 : Using default destination of 1 (file).

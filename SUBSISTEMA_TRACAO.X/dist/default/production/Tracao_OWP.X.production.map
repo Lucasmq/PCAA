@@ -1,0 +1,196 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Thu Oct 11 23:26:32 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_2       code   0x000000    program   0x000002
+                   .org_3       code   0x000004    program   0x00050e
+.config_2007_TRACAO_OWP.O       code   0x002007    program   0x000002
+                   .org_1       code   0x002100    program   0x000014
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000004    0x00028a      
+                            0x002007    0x002007      
+                            0x002100    0x002109      
+            659 out of 1158 program addresses used, program memory utilization is 56%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    BIT_0   0x000060    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                    BIT_1   0x00006a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                  COLISAO   0x0000a5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+      COLISAO_ENVIAR_BITS   0x00024b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        COLISAO_START_BIT   0x000245    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        CONCLUIDA_LEITURA   0x000094    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               DELAY100MS   0x000268    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             DELAY100MS_0   0x00026c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                 DELAY_US   0x00025d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                  ENVIA_0   0x000216    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                  ENVIA_1   0x000222    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               ENVIA_BYTE   0x000213    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              ENVIA_DADOS   0x0001b2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         ESPERA_BIT_MUDAR   0x000074    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+       ESPERA_BIT_MUDAR_1   0x000077    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         ESPERA_SUBIDA_ST   0x00004d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+  ESPERA_SUBIDA_START_BIT   0x00004a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                       F1   0x0000c8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              F1_PRA_ALTA   0x0000ce    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             F1_PRA_BAIXA   0x0000d4    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                       F2   0x0000da    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              F2_PRA_ALTA   0x0000e0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             F2_PRA_BAIXA   0x0000e6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                       F3   0x0000ec    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              F3_PRA_ALTA   0x0000f2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             F3_PRA_BAIXA   0x0000f8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               FIM_BYTE_0   0x0001c8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                 FIM_DADO   0x0001da    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             FIM_ENDERECO   0x0001d1    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          FIM_ENVIA_DADOS   0x0001a2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+            FIM_START_BIT   0x0001c3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         INCREMENTA_LIMPA   0x00001d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+     INCREMENTA_START_BIT   0x00003b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+    INICIALIZA_CONTADORES   0x000273    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                   INICIO   0x00013d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        INICIO_START_SYNC   0x000012    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+     INIC_CONT_START_SYNC   0x00000e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         LABEL_TEMPO_ALTA   0x00027b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        LABEL_TEMPO_BAIXA   0x000283    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                 LER_BITS   0x000052    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        LER_BITS_CONTINUA   0x000057    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                LE_EEPROM   0x000136    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                     MAIN   0x00019e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                MUDA_TMR1   0x00007c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+            OK_TRATAMENTO   0x000124    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        OK_TRATAMENTO_SAI   0x000132    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                    PARAR   0x000120    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               PASSA_DADO   0x0000a9    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                       RE   0x0000fe    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               REQUISICAO   0x000110    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              RE_PRA_ALTA   0x000104    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             RE_PRA_BAIXA   0x00010a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                SAI_DAQUI   0x0000a3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                  SAI_INT   0x0000ac    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                START_BIT   0x000034    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+      START_BIT_CONFIGURA   0x000031    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          START_BIT_ENVIA   0x0001df    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         START_BIT_INICIO   0x00002f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+            START_BIT_LOW   0x000045    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+     START_BIT_LOW_INICIO   0x000042    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               START_SYNC   0x000016    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         START_SYNC_SLAVE   0x000255    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+       START_SYNC_SLAVE_0   0x000258    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+           SUB_TEMPO_ALTA   0x00027e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          SUB_TEMPO_BAIXA   0x000286    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          TEMPO_EM_ALTA_1   0x000129    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+      TEMPO_EM_ALTA_1_INT   0x000082    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+           TEMPO_EM_BAIXA   0x000242    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         TEMPO_EM_BAIXA_1   0x00012e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+     TEMPO_EM_BAIXA_1_INT   0x00008d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+           TRATAR_COLISAO   0x00000b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              TRATAR_DADO   0x0000b8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             VERIFICA_1_0   0x00005d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+      VERIFICA_BARRAMENTO   0x0001a4    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+    VERIFICA_BARRAMENTO_0   0x0001ab    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+           VERIFICA_F2_F3   0x0000c5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          VERIFICA_MASTER   0x00002a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+   VERIFICA_RE_REQUESICAO   0x0000c2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          VERIFICA_SLAVER   0x000022    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+       VERIFICA_START_BIT   0x00003f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           TRATAR_COLISAO   0x00000b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+     INIC_CONT_START_SYNC   0x00000e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        INICIO_START_SYNC   0x000012    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               START_SYNC   0x000016    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         INCREMENTA_LIMPA   0x00001d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          VERIFICA_SLAVER   0x000022    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          VERIFICA_MASTER   0x00002a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         START_BIT_INICIO   0x00002f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+      START_BIT_CONFIGURA   0x000031    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                START_BIT   0x000034    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+     INCREMENTA_START_BIT   0x00003b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+       VERIFICA_START_BIT   0x00003f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+     START_BIT_LOW_INICIO   0x000042    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+            START_BIT_LOW   0x000045    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+  ESPERA_SUBIDA_START_BIT   0x00004a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         ESPERA_SUBIDA_ST   0x00004d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                 LER_BITS   0x000052    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        LER_BITS_CONTINUA   0x000057    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             VERIFICA_1_0   0x00005d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                    BIT_0   0x000060    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                    BIT_1   0x00006a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         ESPERA_BIT_MUDAR   0x000074    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+       ESPERA_BIT_MUDAR_1   0x000077    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                MUDA_TMR1   0x00007c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+      TEMPO_EM_ALTA_1_INT   0x000082    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+     TEMPO_EM_BAIXA_1_INT   0x00008d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        CONCLUIDA_LEITURA   0x000094    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                SAI_DAQUI   0x0000a3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                  COLISAO   0x0000a5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               PASSA_DADO   0x0000a9    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                  SAI_INT   0x0000ac    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              TRATAR_DADO   0x0000b8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+   VERIFICA_RE_REQUESICAO   0x0000c2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+           VERIFICA_F2_F3   0x0000c5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                       F1   0x0000c8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              F1_PRA_ALTA   0x0000ce    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             F1_PRA_BAIXA   0x0000d4    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                       F2   0x0000da    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              F2_PRA_ALTA   0x0000e0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             F2_PRA_BAIXA   0x0000e6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                       F3   0x0000ec    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              F3_PRA_ALTA   0x0000f2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             F3_PRA_BAIXA   0x0000f8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                       RE   0x0000fe    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              RE_PRA_ALTA   0x000104    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             RE_PRA_BAIXA   0x00010a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               REQUISICAO   0x000110    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                    PARAR   0x000120    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+            OK_TRATAMENTO   0x000124    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          TEMPO_EM_ALTA_1   0x000129    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         TEMPO_EM_BAIXA_1   0x00012e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        OK_TRATAMENTO_SAI   0x000132    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                LE_EEPROM   0x000136    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                   INICIO   0x00013d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                     MAIN   0x00019e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          FIM_ENVIA_DADOS   0x0001a2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+      VERIFICA_BARRAMENTO   0x0001a4    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+    VERIFICA_BARRAMENTO_0   0x0001ab    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+              ENVIA_DADOS   0x0001b2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+            FIM_START_BIT   0x0001c3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               FIM_BYTE_0   0x0001c8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             FIM_ENDERECO   0x0001d1    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                 FIM_DADO   0x0001da    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          START_BIT_ENVIA   0x0001df    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               ENVIA_BYTE   0x000213    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                  ENVIA_0   0x000216    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                  ENVIA_1   0x000222    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+           TEMPO_EM_BAIXA   0x000242    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        COLISAO_START_BIT   0x000245    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+      COLISAO_ENVIAR_BITS   0x00024b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         START_SYNC_SLAVE   0x000255    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+       START_SYNC_SLAVE_0   0x000258    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+                 DELAY_US   0x00025d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+               DELAY100MS   0x000268    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+             DELAY100MS_0   0x00026c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+    INICIALIZA_CONTADORES   0x000273    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+         LABEL_TEMPO_ALTA   0x00027b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+           SUB_TEMPO_ALTA   0x00027e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+        LABEL_TEMPO_BAIXA   0x000283    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+          SUB_TEMPO_BAIXA   0x000286    program     static C:\Users\Lucas Queiroz\MPLABXProjects\Tracao_OWP.X\tracao_owp.asm
+
+

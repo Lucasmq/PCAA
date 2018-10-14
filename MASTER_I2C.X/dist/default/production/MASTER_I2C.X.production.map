@@ -1,0 +1,218 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Sun Oct 14 03:13:35 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_2       code   0x000000    program   0x000002
+                   .org_3       code   0x000004    program   0x000558
+.config_2007_MASTER_I2C.O       code   0x002007    program   0x000002
+                   .org_1       code   0x002100    program   0x000008
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000004    0x0002af      
+                            0x002007    0x002007      
+                            0x002100    0x002103      
+            690 out of 8454 program addresses used, program memory utilization is 8%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    BIT_0   0x0000b8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                    BIT_1   0x0000c5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      COLISAO_ENVIAR_BITS   0x000200    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      COLISAO_OPERACIONAL   0x000288    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        COLISAO_START_BIT   0x0001fb    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        CONCLUIDA_LEITURA   0x0000d2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+               DELAY100MS   0x00021f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             DELAY100MS_0   0x000223    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                DELAY10MS   0x00022a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+              DELAY10MS_0   0x00022e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+              DELAY_MICRO   0x000235    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                 DELAY_US   0x000214    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      DIRECAO_OPERACIONAL   0x000292    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                    ENVIA   0x000175    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                ENVIAR_OK   0x00019f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                  ENVIA_0   0x0001d6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                  ENVIA_1   0x0001e2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+               ENVIA_BYTE   0x0001d3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+              ENVIA_DADOS   0x000192    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            ENVIA_DIRECAO   0x000140    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          ENVIA_DIRECAO_2   0x000158    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                ENVIA_NAK   0x0002a1    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           ENVIA_SENSORES   0x000150    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        ENVIA_SINALIZACAO   0x000168    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             ENVIA_TRACAO   0x000148    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           ENVIA_TRACAO_2   0x000160    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+              ESCREVE_I2C   0x000037    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           ESCREVE_I2C_02   0x000048    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+       ESPERA_BIT_0_MUDAR   0x0000c2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+       ESPERA_BIT_1_MUDAR   0x0000cf    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+         ESPERA_SUBIDA_ST   0x0000a5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+  ESPERA_SUBIDA_START_BIT   0x0000a2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+         ESTA_OPERACIONAL   0x00026d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+               FIM_BYTE_0   0x0001ad    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                 FIM_DADO   0x0001bf    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             FIM_ENDERECO   0x0001b6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          FIM_ENVIA_DADOS   0x00017c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            FIM_START_BIT   0x0001a8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          IDENTIF_ESTADO2   0x000023    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          IDENTIF_ESTADO3   0x00002f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          IDENTIF_ESTADO4   0x000040    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          IDENTIF_ESTADO5   0x000050    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+         INCREMENTA_LIMPA   0x000078    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+     INCREMENTA_START_BIT   0x000093    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                   INICIO   0x00010d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        INICIO_START_SYNC   0x00006f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+     INIC_CONT_START_SYNC   0x00006b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                 LER_BITS   0x0000aa    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        LER_BITS_CONTINUA   0x0000af    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                LE_EEPROM   0x000106    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          LIMPA_MONITORIA   0x000170    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                     MAIN   0x000138    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+MOTORISTA_COMANDO_SUBSISTEMAS   0x000266    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+MOTORISTA_SOLICITA_SUBSISTEMAS   0x00024d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                   RECALL   0x0002b0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             RESGATA_REGS   0x000059    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                  SAI_INT   0x0000f6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            SALVA_COLISAO   0x0000e7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            SALVA_DIRECAO   0x0000ed    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+               SALVA_REGS   0x000004    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           SALVA_SENSORES   0x0000ea    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        SALVA_SINALIZACAO   0x0000f3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             SALVA_TRACAO   0x0000f0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+     SENSORES_OPERACIONAL   0x00028d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+  SINALIZACAO_OPERACIONAL   0x00029c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                START_BIT   0x00008e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      START_BIT_CONFIGURA   0x00008b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          START_BIT_ENVIA   0x0001c7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+         START_BIT_INICIO   0x000089    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            START_BIT_LOW   0x00009d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+     START_BIT_LOW_INICIO   0x00009a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+               START_SYNC   0x000073    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        START_SYNC_MASTER   0x000209    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      START_SYNC_MASTER_0   0x00020e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           TEMPO_EM_BAIXA   0x0001f7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+       TRACAO_OPERACIONAL   0x000297    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           TRATAR_COLISAO   0x000068    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+         TRATA_BARRAMENTO   0x000062    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            TRATA_ESTADO1   0x00001d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            TRATA_ESTADO2   0x000027    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            TRATA_ESTADO3   0x000033    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            TRATA_ESTADO4   0x000044    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            TRATA_ESTADO5   0x000055    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             TRATA_EVENTO   0x000014    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                 TRATA_L3   0x00023b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             VERIFICA_1_0   0x0000b5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      VERIFICA_BARRAMENTO   0x000184    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+    VERIFICA_BARRAMENTO_0   0x00018b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          VERIFICA_MASTER   0x000085    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          VERIFICA_SLAVER   0x00007d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+       VERIFICA_START_BIT   0x000097    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+               SALVA_REGS   0x000004    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             TRATA_EVENTO   0x000014    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            TRATA_ESTADO1   0x00001d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          IDENTIF_ESTADO2   0x000023    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            TRATA_ESTADO2   0x000027    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          IDENTIF_ESTADO3   0x00002f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            TRATA_ESTADO3   0x000033    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+              ESCREVE_I2C   0x000037    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          IDENTIF_ESTADO4   0x000040    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            TRATA_ESTADO4   0x000044    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           ESCREVE_I2C_02   0x000048    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          IDENTIF_ESTADO5   0x000050    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            TRATA_ESTADO5   0x000055    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             RESGATA_REGS   0x000059    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+         TRATA_BARRAMENTO   0x000062    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           TRATAR_COLISAO   0x000068    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+     INIC_CONT_START_SYNC   0x00006b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        INICIO_START_SYNC   0x00006f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+               START_SYNC   0x000073    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+         INCREMENTA_LIMPA   0x000078    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          VERIFICA_SLAVER   0x00007d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          VERIFICA_MASTER   0x000085    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+         START_BIT_INICIO   0x000089    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      START_BIT_CONFIGURA   0x00008b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                START_BIT   0x00008e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+     INCREMENTA_START_BIT   0x000093    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+       VERIFICA_START_BIT   0x000097    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+     START_BIT_LOW_INICIO   0x00009a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            START_BIT_LOW   0x00009d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+  ESPERA_SUBIDA_START_BIT   0x0000a2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+         ESPERA_SUBIDA_ST   0x0000a5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                 LER_BITS   0x0000aa    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        LER_BITS_CONTINUA   0x0000af    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             VERIFICA_1_0   0x0000b5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                    BIT_0   0x0000b8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+       ESPERA_BIT_0_MUDAR   0x0000c2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                    BIT_1   0x0000c5    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+       ESPERA_BIT_1_MUDAR   0x0000cf    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        CONCLUIDA_LEITURA   0x0000d2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            SALVA_COLISAO   0x0000e7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           SALVA_SENSORES   0x0000ea    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            SALVA_DIRECAO   0x0000ed    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             SALVA_TRACAO   0x0000f0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        SALVA_SINALIZACAO   0x0000f3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                  SAI_INT   0x0000f6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                LE_EEPROM   0x000106    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                   INICIO   0x00010d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                     MAIN   0x000138    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            ENVIA_DIRECAO   0x000140    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             ENVIA_TRACAO   0x000148    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           ENVIA_SENSORES   0x000150    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          ENVIA_DIRECAO_2   0x000158    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           ENVIA_TRACAO_2   0x000160    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        ENVIA_SINALIZACAO   0x000168    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          LIMPA_MONITORIA   0x000170    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                    ENVIA   0x000175    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          FIM_ENVIA_DADOS   0x00017c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      VERIFICA_BARRAMENTO   0x000184    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+    VERIFICA_BARRAMENTO_0   0x00018b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+              ENVIA_DADOS   0x000192    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                ENVIAR_OK   0x00019f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+            FIM_START_BIT   0x0001a8    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+               FIM_BYTE_0   0x0001ad    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             FIM_ENDERECO   0x0001b6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                 FIM_DADO   0x0001bf    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+          START_BIT_ENVIA   0x0001c7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+               ENVIA_BYTE   0x0001d3    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                  ENVIA_0   0x0001d6    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                  ENVIA_1   0x0001e2    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+           TEMPO_EM_BAIXA   0x0001f7    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        COLISAO_START_BIT   0x0001fb    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      COLISAO_ENVIAR_BITS   0x000200    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+        START_SYNC_MASTER   0x000209    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      START_SYNC_MASTER_0   0x00020e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                 DELAY_US   0x000214    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+               DELAY100MS   0x00021f    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+             DELAY100MS_0   0x000223    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                DELAY10MS   0x00022a    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+              DELAY10MS_0   0x00022e    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+              DELAY_MICRO   0x000235    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                 TRATA_L3   0x00023b    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+MOTORISTA_SOLICITA_SUBSISTEMAS   0x00024d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+MOTORISTA_COMANDO_SUBSISTEMAS   0x000266    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+         ESTA_OPERACIONAL   0x00026d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      COLISAO_OPERACIONAL   0x000288    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+     SENSORES_OPERACIONAL   0x00028d    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+      DIRECAO_OPERACIONAL   0x000292    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+       TRACAO_OPERACIONAL   0x000297    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+  SINALIZACAO_OPERACIONAL   0x00029c    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                ENVIA_NAK   0x0002a1    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+                   RECALL   0x0002b0    program     static C:\Users\Lucas Queiroz\MPLABXProjects\MASTER_I2C.X\MASTER_I2C.asm
+
+
